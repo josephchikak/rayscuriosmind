@@ -12,11 +12,8 @@ import Monitor from "./components/Monitor"
 
 const Journal = () => {
 
-
-
     // let width = p5Cointainer.clientWidth
     // let height = p5Cointainer.clientHeight
-
 
   return (
     <motion.div
@@ -89,14 +86,11 @@ const Journal = () => {
                 className="p-5 column-4 h-[100%] flex w-[100%] border-black ">
                 <JournalEntry/>
 
-              
-
                 {/* <div>
                      <P5sketch/>
                </div> */}
 
             {/* <div className="sticky bottom-[90%] z-1 left-[80%] w-[250px] h-[250px] bg-primary border-4 border-black bg-cover bg-center bg-[url('/photos/DSC01927.jpg')]">
-
 
             </div> */}
 
