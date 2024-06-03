@@ -3,8 +3,10 @@ import { motion } from "framer-motion"
 import { Reorder } from 'framer-motion'
 import { useRef, useState } from 'react';
 
-const JournalCard = ( {entry, images} ) => {
+const JournalCard = ( {entry, images, url} ) => {
 
+
+console.log(url)
 
 
     const constraintRef = useRef(null)
@@ -31,13 +33,13 @@ const JournalCard = ( {entry, images} ) => {
         //     // delay:1
         //   } }}
         // viewport={{ once: true }}
-        className="p-5 mb-2 flex journalCard w-[100%] hover:cursor-pointer transition-all ease-in-out rounded-lg border-2 bg-primary"  ref={constraintRef}>
+        className="p-5 mb-2 flex journalCard w-[100%] transition-all ease-in-out rounded-lg border-2 bg-primary"  ref={constraintRef}>
         <motion.div  
     
 
            className="grid grid-cols-3 md:grid-cols-1 rounded-[10px] w-[100%]" >
                     
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid sm:grid-cols-2 gap-4'>
 
                 {/* {
                 images.map((image, index) => (
@@ -52,10 +54,10 @@ const JournalCard = ( {entry, images} ) => {
                     )
                     ) 
                }     */}
-                 <div>
+                 <div className='w-[100%]'>
 
                   { (images[0].fields.description === 'video') ? 
-                      <video muted={false} className='h-auto w-[100%] border-2 border-black rounded-lg' controls >
+                      <video muted={false} className='h-auto w-[100%] sm:h-auto sm:w-[100%] border-2 border-black rounded-lg' controls >
                       <source src={`${mainPic}`} type="video/mp4" />
     
                       </video> 
@@ -63,7 +65,7 @@ const JournalCard = ( {entry, images} ) => {
 
                   :
 
-                  <img  className="h-auto max-w-full rounded-lg border-2 border-black" 
+                  <img  className="lg:h-[250px] h-auto max-w-full rounded-lg border-2 border-black" 
                   src={`${mainPic}`}/> 
                   }
 
@@ -75,7 +77,11 @@ const JournalCard = ( {entry, images} ) => {
 
            <div className='ml-5 h-auto max-w-full rounded-lg text-[black] font-entryFont flex flex-col gap-4 justify-between'>
              {/* <h3 className='text-[2em]'> enry title</h3> */}
-             <p className='text-lg'> {entry} </p>
+             <div>
+                 <p className='sm:text-lg sm:w-fit w-[50vw]'> {entry} </p>
+                  <a href={url} target='_blank ' className=' hover:cursor-pointer text-[white]'>{url}</a>
+
+             </div>
              <div className='flex flex-row gap-2 items-end jus'>
 
 
@@ -95,7 +101,7 @@ const JournalCard = ( {entry, images} ) => {
                      
                      : 
                       
-                     <img  key={index} className="h-auto w-[100%] p-2 rounded-lg border-black border-2 "
+                     <img  key={index} className="h-auto w-[100%] p-2 rounded-lg border-black border-2  hover:cursor-pointer "
                      onClick={() => handleClick(image)} 
                      src={`${image.fields.file.url}` } /> 
                      

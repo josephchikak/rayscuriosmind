@@ -18,28 +18,28 @@ const Journal = () => {
   return (
     <motion.div
     
-     className=' w-[100vw] h-[100%] text-black flex flex-col bg-background transition-all ease-in-out '>
-          <div className="h-[50vh] relative">
+     className=' w-[100%] h-[100%] text-black flex flex-col bg-background transition-all ease-in-out overflow-hidden'>
+          <div className="h-[80vh] invinsible sm:visible sm:h-[50vh] relative">
                   <Scene/>
 
           <div className='list-none h-[100%] w-[100vw]  z-1 overflow-hidden absolute '>
                 <nav className="w-[100%]">
-                    <ul className="flex p-2 font-gord justify-center z-10 text-[1.25rem]">
-                        <li className="p-1 hover:cursor-pointer hover:border-b-primary hover:border-b-4 border-r-2">
-                            about me
+                    <ul className="flex p-2 font-gord justify-center z-10 text-[1.25rem] ">
+                        <li className="p-2 hover:cursor-pointer hover:border-b-primary hover:border-b-2 absolute hidden sm:visible">
+                            contact me
                         </li>
 
-                        <li className="p-1 hover:cursor-pointer hover:border-b-primary hover:border-b-4">
+                        {/* <li className="p-1 hover:cursor-pointer hover:border-b-primary hover:border-b-4">
                             projects
-                        </li>
+                        </li> */}
                     </ul>
 
                 </nav>
                 {/* <ul className=""> */}
-                    <h1 className="w-[20%] flex justify-left flex-col font-gord pl-14 pb-20 z-[1000] text-[5.062rem]">
+                    <h1 className="w-[20%] flex justify-left flex-col font-gord pl-14 sm:pb-20  z-[1000] text-[5.062rem]">
                     {/* <span className="text-[2rem] ">welcome to </span>  */}
                     ray's curious mind <br/>
-                    <span className="text-[1.5rem] font-entryFont w-[100%]">Hi and welcome to my playground</span>
+                    <span className="text-[1.25rem] font-entryFont md:w-[50vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">Hi and welcome to my playground</span>
                     </h1>
                 {/* </ul> */}
         </div>
@@ -52,11 +52,12 @@ const Journal = () => {
       
 
 
-            <h2 className="p-5 text-[1.5rem] border-b-2 font-gord self-center">About</h2>
+            <h2 className="p-5 text-[1.5rem] border-b-2 border-primary font-gord self-center">About</h2>
 
-            <div className="p-5 flex w-[100%] ">
+            <div className="p-5 flex flex-col md:flex-row h-[50vh] sm:h-[100%] w-[100vw] ">
 
                 <About/>
+
                 <motion.div  
 
                     initial={{ x: 500 }}
@@ -69,7 +70,7 @@ const Journal = () => {
                     // exit={{x: 500}}
                     
                                     
-                className="h-[50vh] w-[100%] hover:cursor-pointer">
+                className="md:h-[50vh] md:w-[50%] invisible md:visible hover:cursor-pointer">
 
                 <Canvas>
                     <Monitor/>
@@ -79,7 +80,7 @@ const Journal = () => {
 
             </div>
 
-            <h2 className="p-5 mb-1 text-[1.5rem] border-b-2 font-gord self-center">Projects/ Jornal Entries</h2>
+            <h2 className="p-5 mb-1 text-[1.5rem] border-b-2 border-primary font-gord self-center">Projects/ Jornal Entries</h2>
 
             <motion.div 
             
