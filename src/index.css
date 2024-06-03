@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family:'Gord';
+  src: url('./assets/fonts/gordqucikblack-p7erv.otf');
+}
+
+@font-face {
+  font-family: 'thunder';
+  src: url('./assets/fonts/Thunder-ExtraBoldHC.otf');
+}
+
+:root {
+  /* font-family: "adobe-garamond-pro", serif; */
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark; */
+  /* color: rgba(0, 0, 0, 0.87); */
+  /* background-color: #fffaf0; */
+  color: #f7f7ff;
+  transition: all ease-out 0.8s;
+
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+
