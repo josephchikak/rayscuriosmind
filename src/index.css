@@ -12,6 +12,16 @@
   src: url('./assets/fonts/Thunder-ExtraBoldHC.otf');
 }
 
+
+@font-face {
+  font-family: 'cabinet';
+  src: url('./assets/fonts/CabinetGrotesk-Regular.otf');
+}
+
+
+
+
+
 :root {
   /* font-family: "adobe-garamond-pro", serif; */
   line-height: 1.5;

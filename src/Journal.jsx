@@ -36,7 +36,7 @@ const Journal = () => {
 
                 </nav>
                 {/* <ul className=""> */}
-                    <h1 className="w-[20%] flex justify-left flex-col font-gord pl-14 sm:pb-20  z-[1000] text-[5.062rem]">
+                    <h1 className="w-[20%] flex justify-left flex-col font-gord pl-10 sm:pb-20  z-[1000] text-[5.062rem]">
                     {/* <span className="text-[2rem] ">welcome to </span>  */}
                     ray's curious mind <br/>
                     <span className="text-[1.25rem] font-entryFont md:w-[50vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">Hi and welcome to my playground</span>
@@ -52,9 +52,9 @@ const Journal = () => {
       
 
 
-            <h2 className="p-5 text-[1.5rem] border-b-2 border-primary font-gord self-center">About</h2>
+            <h2 className="p-5 pl-[20px] text-[1.5rem] border-b-2 border-primary font-gord">About</h2>
 
-            <div className="p-5 flex flex-col md:flex-row h-[50vh] sm:h-[100%] w-[100vw] ">
+            <div className="p-5 flex flex-col md:flex-row h-[100%] sm:h-[100%] w-[100vw] ">
 
                 <About/>
 
@@ -80,7 +80,7 @@ const Journal = () => {
 
             </div>
 
-            <h2 className="p-5 mb-1 text-[1.5rem] border-b-2 border-primary font-gord self-center">Projects/ Jornal Entries</h2>
+            <h2 className="p-5 pl-[20px] mb-1 text-[1.5rem] border-b-2 border-primary font-gord">Projects/ Jornal Entries</h2>
 
             <motion.div 
             

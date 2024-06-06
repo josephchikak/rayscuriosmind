@@ -3,10 +3,8 @@ import { motion } from "framer-motion"
 import { Reorder } from 'framer-motion'
 import { useRef, useState } from 'react';
 
-const JournalCard = ( {entry, images, url} ) => {
+const JournalCard = ( {entry, images, url, code} ) => {
 
-
-console.log(url)
 
 
     const constraintRef = useRef(null)
@@ -79,7 +77,26 @@ console.log(url)
              {/* <h3 className='text-[2em]'> enry title</h3> */}
              <div>
                  <p className='sm:text-lg sm:w-fit w-[50vw]'> {entry} </p>
-                  <a href={url} target='_blank ' className=' hover:cursor-pointer text-[white]'>{url}</a>
+               
+                 <div className='flex flex-col pt-2'>
+
+                 {(url === undefined)
+                     ? 
+                      <></>   
+                     : 
+                     <a href={url} target='_blank ' className=' hover:cursor-pointer text-[white]'> <span className='text-[black] pb-5' >Live demo:</span> <br />{url}</a>
+
+                     
+                     }
+                   
+                     {(code === undefined)
+                     ? 
+                      <></>   
+                     : 
+                     <a href={code} target='_blank' className=' hover:cursor-pointer text-[white]'> <span className='text-[black] pb-5'> Code: </span><br />{code}</a>
+                     
+                     }
+                 </div>
 
              </div>
              <div className='flex flex-row gap-2 items-end jus'>

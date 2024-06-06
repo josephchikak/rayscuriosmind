@@ -20,10 +20,10 @@ const JournalEntry = () => {
    
 
   return (
-    <div className=" w-[100%] p-2 sm:columns-2">
+    <div className=" w-[100%] p-5 sm:columns-2">
         <h1> </h1>
         {
-            entries.map((entry, index) => <JournalCard key={index} entry={entry.journalEntry} images={entry.images} url={entry.url}/>)
+            entries.map((entry, index) => <JournalCard key={index} entry={entry.journalEntry} images={entry.images} url={entry.url} code={entry.code}/>)
         }
 
     </div>
