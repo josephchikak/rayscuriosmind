@@ -25,8 +25,8 @@ const Journal = () => {
           <div className='list-none h-[100%] w-[100vw]  z-1 overflow-hidden absolute '>
                 <nav className="w-[100%]">
                     <ul className="flex p-2 font-gord justify-center z-10 text-[1.25rem] ">
-                        <li className="p-2 hover:cursor-pointer hover:border-b-primary hover:border-b-2 absolute hidden sm:visible">
-                            contact me
+                        <li className="p-2 hover:border-b-primary hover:border-b-2 absolute sm:visible">
+                            under constuction 
                         </li>
 
                         {/* <li className="p-1 hover:cursor-pointer hover:border-b-primary hover:border-b-4">
