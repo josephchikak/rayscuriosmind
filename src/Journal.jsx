@@ -52,7 +52,7 @@ const Journal = () => {
       
 
 
-            <h2 className="p-5 pl-[20px] text-[1.5rem] border-b-2 border-primary font-gord">About</h2>
+            <h2 className="p-5 pl-10 text-[1.5rem] border-b-2 border-primary font-gord">About</h2>
 
             <div className="p-5 flex flex-col md:flex-row h-[100%] sm:h-[100%] w-[100vw] ">
 
@@ -80,7 +80,7 @@ const Journal = () => {
 
             </div>
 
-            <h2 className="p-5 pl-[20px] mb-1 text-[1.5rem] border-b-2 border-primary font-gord">Projects/ Jornal Entries</h2>
+            <h2 className="p-5 pl-10 mb-1 text-[1.5rem] border-b-2 border-primary font-gord">Projects</h2>
 
             <motion.div 
             
