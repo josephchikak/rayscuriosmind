@@ -16,11 +16,11 @@ const container = useRef()
 
 
   return (
-    <div className="absolute top-0 h-[100%] w-[100vw]"  ref={container}>
+    <div className="absolute top-0 h-[100%] w-[100vw] "  ref={container}>
 
 
 
-    <View index={1} className="absolute top-0 w-[100%] sm:w-[70%] h-[100%] p-5">
+    <View index={1} className="absolute top-0 w-[100%] sm:w-[70%] h-[100%] p-5 ">
 
 
         <LandingPage/>
@@ -30,7 +30,7 @@ const container = useRef()
     </View>
 
 
- <View index={2} className="absolute invisible sm:visible top-[70%] sm:top-[50px] left-[50%] md:left-[67%] lg:left-[79%] w-[200px] h-[200px] bg-[black] bg-cover bg-center border-2 rounded-lg border-black hover:mouse-pointer" >
+ <View index={2} className="absolute invisible border-primary sm:visible top-[70%] sm:top-[50px] left-[50%] md:left-[67%] lg:left-[79%] w-[200px] h-[200px] bg-[black] bg-cover bg-center border-2 rounded-lg border-black hover:mouse-pointer" >
 
     <ambientLight intensity={1}/>
     {/* <OrbitControls/> */}
@@ -68,7 +68,7 @@ const container = useRef()
 
 </Canvas>
 
- <div className="invisible sm:visible absolute top-0 right-0  h-[100%] lg:w-[30vw] md:w-[40vw]  border-2 flex justify-center items-end z-10">
+ <div className="invisible sm:visible absolute top-0 right-0  h-[100%] lg:w-[30vw] md:w-[40vw] border-primary  border-2 flex justify-center items-end z-10">
       <img src="/icons/icons8-play-pause-48.png" className=" m-20 hover:cursor-pointer bg-primary hover:bg-background"/>
  </div>
 

@@ -19,7 +19,7 @@ const Journal = () => {
     <motion.div
     
      className=' w-[100%] h-[100%] text-black flex flex-col bg-background transition-all ease-in-out overflow-hidden'>
-          <div className="h-[80vh] invinsible sm:visible sm:h-[50vh] relative">
+          <div className="h-[80vh] invinsible sm:visible sm:h-[50vh] relative ">
                   <Scene/>
 
           <div className='list-none h-[100%] w-[100vw]  z-1 overflow-hidden absolute '>
@@ -48,7 +48,7 @@ const Journal = () => {
      
       
 
-        <main className="w-[100%] h-[100%] flex flex-col border-black border-t-2">
+        <main className="w-[100%] h-[100%] flex flex-col border-primary border-t-2">
       
 
 
