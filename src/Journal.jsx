@@ -6,18 +6,87 @@ import { motion, useScroll } from 'framer-motion'
 import About from "./components/About"
 import { Canvas , useFrame} from "@react-three/fiber"
 import Monitor from "./components/Monitor"
+import {gsap} from 'gsap'
+import { useEffect, useRef, useLayoutEffect } from "react"
+import LocomotiveScroll from "locomotive-scroll";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+
 
 
 
 
 const Journal = () => {
 
+
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+
+         const locomotiveScroll = new LocomotiveScroll()
+
+         const timeline = gsap.timeline({
+                scrollTrigger:{
+                    trigger: document.documentElement,
+                    start:'top',
+                    end: 'bottom',
+                    scrub:true,
+                    toggleActions: 'reverse'
+                
+
+                }
+         })
+
+         timeline
+            .to(textRef.current, {opacity: 0 })
+
+    })
+
+    const container = useRef()
+    const textRef = useRef(null)
+
+   
+    // useLayoutEffect(() => {
+
+
+        
+    //    let height = container.current.getBoundingClientRect().height
+
+    //     document.body.style.height = height + "px";
+
+    //     console.log(height, document.documentElement.clientHeight)
+    
+    //     gsap.to(container.current, {
+    //         y: () => -(height - document.documentElement.clientHeight),
+    //         // ease: 'sine.out',
+    //         // duration:2,
+    //         scrollTrigger: {
+    //           trigger: document.body,
+    //           start: "top top",
+    //           end: "bottom bottom",
+    //           scrub: 1,
+    //         //   scroll:container.current
+    //         //   toggleActions:'reverse'
+    //         }
+    //       });
+    
+    // },[])
+
+
+
     // let width = p5Cointainer.clientWidth
     // let height = p5Cointainer.clientHeight
 
+  
+      
+
+
   return (
-    <motion.div
-    
+    <div
+    data-scroll 
+    // data-scroll-speed='0.5'
+    ref={container}
      className=' w-[100%] h-[100%] text-black flex flex-col bg-background transition-all ease-in-out overflow-hidden'>
           <div className="h-[80vh] invinsible sm:visible sm:h-[50vh] relative ">
                   <Scene/>
@@ -36,7 +105,7 @@ const Journal = () => {
 
                 </nav>
                 {/* <ul className=""> */}
-                    <h1 className="w-[20%] flex justify-left flex-col font-gord pl-10 sm:pb-20  z-[1000] text-[5.062rem]">
+                    <h1 ref={textRef} className="w-[20%] flex justify-left flex-col font-gord pl-10 sm:pb-20  z-[1000] text-[5.062rem]">
                     {/* <span className="text-[2rem] ">welcome to </span>  */}
                     ray's curious mind <br/>
                     <span className="text-[1.25rem] font-entryFont md:w-[50vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">Hi and welcome to my playground</span>
@@ -54,7 +123,8 @@ const Journal = () => {
 
             <h2 className="p-5 pl-10 text-[1.5rem] border-b-2 border-primary font-gord">About</h2>
 
-            <div className="p-5 flex flex-col md:flex-row h-[100%] sm:h-[100%] w-[100vw] ">
+            <div   
+                className="p-5 flex flex-col md:flex-row h-[100%] sm:h-[100%] w-[100vw] ">
 
                 <About/>
 
@@ -80,9 +150,12 @@ const Journal = () => {
 
             </div>
 
+        
             <h2 className="p-5 pl-10 mb-1 text-[1.5rem] border-b-2 border-primary font-gord">Projects</h2>
 
-            <motion.div 
+            <div 
+                    data-scroll 
+                    data-scroll-speed='0.1'
             
                 className="p-5 column-4 h-[100%] flex w-[100%] border-black ">
                 <JournalEntry/>
@@ -95,13 +168,13 @@ const Journal = () => {
 
             </div> */}
 
-         </motion.div>
+         </div>
          
           
        
         </main>
  
-  </motion.div>
+  </div>
   )
 }
 

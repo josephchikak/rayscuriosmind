@@ -1,13 +1,41 @@
 import Draggable from 'react-draggable';
 import { motion } from "framer-motion"
 import { Reorder } from 'framer-motion'
-import { useRef, useState } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from 'gsap';
+
 
 const JournalCard = ( {entry, images, url, code} ) => {
 
+  const card = useRef(null)
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
 
-    const constraintRef = useRef(null)
+      gsap.from(card.current, {
+            scrollTrigger:{
+                trigger: card.current,
+                start:'0px bottom',
+                end: '500px bottom',
+                // markers: true,
+                scrub:true,
+                toggleActions: 'reverse'
+            },
+            opacity: 0,
+            // delay:1,
+            y:'-20px',
+            duration:1,
+            ease:'linear'
+     })
+
+    //  timeline
+    //     .from(card.current, {opacity: 0 })
+
+},[])
+
+   const constraintRef = useRef(null)
 
    const [mainPic, setMainPic] = useState(images[0].fields.file.url)
 
@@ -23,16 +51,9 @@ const JournalCard = ( {entry, images, url, code} ) => {
     // console.log(entry)
   return ( 
     <div 
-        // initial={{ opacity: 0 }}
-        // whileInView={{ opacity:1,
-        //   transition: {
-        //     type: "tween",
-        //     duration: 2,
-        //     // delay:1
-        //   } }}
-        // viewport={{ once: true }}
-        className="p-5 mb-2 flex  journalCard w-[100%] transition-all ease-in-out rounded-lg border-2 border-primary"  ref={constraintRef}>
-        <motion.div  
+        
+        className="p-5 mb-2 flex h-fit journalCard w-[100%] transition-all ease-in-out rounded-lg border-2 border-primary relative"  ref={card}>
+        <div
     
 
            className="grid grid-cols-3 md:grid-cols-1 rounded-[10px] w-[100%]" >
@@ -141,7 +162,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
 
           </div>
       
-        </motion.div>
+        </div>
 
 
        
