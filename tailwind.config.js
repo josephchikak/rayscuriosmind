@@ -11,7 +11,8 @@ export default {
     colors: {
         'primary' : '#E24E1B',
         'secondary': '#3A6EA5',
-        'background': '#070600'
+        'background': '#070600',
+        'text': '#f8f4e3'
     },
     fontFamily: {
       'entryFont': ["adobe-garamond-pro", 'serif'],

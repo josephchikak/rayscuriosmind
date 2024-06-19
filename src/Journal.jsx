@@ -87,7 +87,7 @@ const Journal = () => {
     data-scroll 
     // data-scroll-speed='0.5'
     ref={container}
-     className=' w-[100%] h-[100%] text-black flex flex-col bg-background transition-all ease-in-out overflow-hidden'>
+     className=' w-[100%] h-[100%] text-text flex flex-col bg-background transition-all ease-in-out overflow-hidden'>
           <div className="h-[80vh] invinsible sm:visible sm:h-[50vh] relative ">
                   <Scene/>
 

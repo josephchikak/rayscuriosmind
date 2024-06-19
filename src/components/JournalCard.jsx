@@ -97,7 +97,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
            <div className='ml-5 h-auto max-w-full rounded-lg text-[black] font-entryFont flex flex-col gap-4 justify-between'>
              {/* <h3 className='text-[2em]'> enry title</h3> */}
              <div>
-                 <p className='sm:text-lg sm:w-fit w-[50vw] text-[white]'> {entry} </p>
+                 <p className='sm:text-lg sm:w-fit w-[50vw] text-text'> {entry} </p>
                
                  <div className='flex flex-col pt-2'>
 
@@ -105,7 +105,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
                      ? 
                       <></>   
                      : 
-                     <a href={url} target='_blank ' className=' hover:cursor-pointer text-[white]'> <span className='text-primary pb-5' >Live demo:</span> <br />{url}</a>
+                     <a href={url} target='_blank ' className=' hover:cursor-pointer text-text]'> <span className='text-primary pb-5' >Live demo:</span> <br />{url}</a>
 
                      
                      }
@@ -114,7 +114,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
                      ? 
                       <></>   
                      : 
-                     <a href={code} target='_blank' className=' hover:cursor-pointer text-[white]'> <span className='text-primary pb-5'> Code: </span><br />{code}</a>
+                     <a href={code} target='_blank' className=' hover:cursor-pointer text-text'> <span className='text-primary pb-5'> Code: </span><br />{code}</a>
                      
                      }
                  </div>
