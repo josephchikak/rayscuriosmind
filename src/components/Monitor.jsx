@@ -44,13 +44,13 @@ config={ { mass: 2, tension: 400 } }
 
 {/* <ambientLight intensity={0}/> */}
 <Float 
-rotationIntensity={ 0.2 }
-floatIntensity={0.4}
+rotationIntensity={ 0.3 }
+floatIntensity={0.5}
 >
 
-<group {...props} dispose={null}  scale={2.5}>
-      <group rotation={[-Math.PI / 2, 0, -Math.PI * 0.5]} position={[0.1,0.5,-0.50]}>
-        <group rotation={[Math.PI / 2,0, 0]}>
+<group {...props} dispose={null}  >
+      <group rotation={[-Math.PI / 2, -Math.PI *0.5, -Math.PI * 0.5]} position={[0,0,-0.50]} scale={2.5}>
+        {/* <group rotation={[Math.PI / 2,0, 0]}>
     
 
           <mesh
@@ -77,22 +77,27 @@ floatIntensity={0.4}
 
           />
 
-          <Html
+        
+          </mesh>
+
+        </group> */}
+
+      <Html
             transform
             wrapperClass='htmlScreen'
-            distanceFactor={0.46}
+            distanceFactor={1}
             rotation={[0,Math.PI * 0.5 ,0]}
-            position={[0,0.25,-0.02]}
+            // position={[0,0.25,-0.02]}
 
         > 
             <iframe src='https://light-house-particles.vercel.app/'/>
         </Html>
 
-          </mesh>
-
-        </group>
       </group>
+      
     </group>
+
+    
 </Float>
 
 </PresentationControls>
