@@ -18,7 +18,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
             scrollTrigger:{
                 trigger: card.current,
                 start:'0px bottom',
-                end: '500px bottom',
+                end: '400px bottom',
                 // markers: true,
                 scrub:true,
                 toggleActions: 'reverse'
@@ -105,7 +105,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
                      ? 
                       <></>   
                      : 
-                     <a href={url} target='_blank ' className=' hover:cursor-pointer text-text]'> <span className='text-primary pb-5' >Live demo:</span> <br />{url}</a>
+                     <a href={url} target='_blank ' className=' hover:cursor-pointer text-text'> <span className='text-primary pb-5' >Live demo</span></a>
 
                      
                      }
@@ -114,7 +114,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
                      ? 
                       <></>   
                      : 
-                     <a href={code} target='_blank' className=' hover:cursor-pointer text-text'> <span className='text-primary pb-5'> Code: </span><br />{code}</a>
+                     <a href={code} target='_blank' className=' hover:cursor-pointer text-text'> <span className='text-primary pb-5'> Code </span></a>
                      
                      }
                  </div>
