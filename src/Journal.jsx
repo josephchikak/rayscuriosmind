@@ -175,7 +175,7 @@ const Journal = () => {
          </div>
 
          <div id="footer" className="w-[100%] h-[20vh] border-t-primary border-t-2 p-5 flex flex-col justify-end">
-            <div className="flex pb-10">
+            <div className="flex pb-5 pt-5">
 
             {/* <a target="_blank" href="https://icons8.com/icon/447/linkedin">LinkedIn</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> */}
             
@@ -190,10 +190,14 @@ const Journal = () => {
                 
             </div>
 
+            <div className="pb-2">
+                <p className="text-[0.9rem]">josephchikak@gmail.com</p>
+            </div>
+
             <div className="flex justify-between">
             <p>© all rights reserved 2024 </p>
 
-            <p>designed by Joseph Chikak</p>
+            <p className="text-[0.9rem]">designed by Joseph Chikak</p>
             </div>
             
 
