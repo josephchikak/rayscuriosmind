@@ -85,7 +85,7 @@ const Journal = () => {
 
 
   return (
-    <Suspense fallback={<Loader/>}>
+    <Suspense fallback={null}>
 
     <div
     data-scroll 
