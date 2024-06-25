@@ -63,10 +63,11 @@ bakedTexture.flipY = false
 
     gl.setPixelRatio((Math.min(window.devicePixelRatio, 2)))
       
-    gl.setClearColor('#E24E1B')
+    gl.setClearColor('#070600')
 
     gl.toneMapping = THREE.ACESFilmicToneMapping
     gl.toneMappingExposure =0.7
+    gl.outputColorSpace = THREE.SRGBColorSpace
     gl.antialias = true
 
     group.current.rotation.y += 0.006

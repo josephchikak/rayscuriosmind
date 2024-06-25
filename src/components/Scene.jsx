@@ -1,4 +1,4 @@
-import { Canvas, useThree } from "@react-three/fiber"
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Box, OrbitControls, useAnimations, useGLTF, PresentationControls, Float , View, OrthographicCamera, useAspect} from "@react-three/drei"
 import { useRef } from "react"
 import  Monitor  from "./Monitor"
@@ -16,11 +16,11 @@ const container = useRef()
 
 
   return (
-    <div className="absolute top-0 h-[100%] w-[100vw] "  ref={container}>
+    <div className="absolute top-0 h-[100vh] w-[100vw] bg-background "  ref={container}>
 
 
 
-    <View index={1} className="absolute top-0 w-[100%] sm:w-[70%] h-[100%] p-5 ">
+    <View index={1} className="absolute top-0 w-[100vw] sm:w-[100%] h-[80%] p-5  bg-text ">
 
 
         <LandingPage/>
@@ -30,9 +30,9 @@ const container = useRef()
     </View>
 
 
- <View index={2} className="absolute invisible border-primary sm:visible top-[70%] sm:top-[50px] left-[50%] md:left-[67%] lg:left-[79%] w-[200px] h-[200px] bg-[black] bg-cover bg-center border-2 rounded-lg border-black hover:mouse-pointer" >
+ <View index={2} className="absolute invisible  border-background sm:visible top-[70%] sm:top-[50px] left-[50%] md:left-[67%] lg:left-[79%] w-[200px] h-[200px] bg-[black] bg-cover bg-center border-2 rounded-lg border-black hover:mouse-pointer " >
 
-    <ambientLight intensity={1}/>
+    {/* <ambientLight intensity={1}/> */}
     {/* <OrbitControls/> */}
 
     {/* <PresentationControls
@@ -62,17 +62,17 @@ const container = useRef()
 
 </View> */}
 
- <Canvas className="canvas top-0 left-0 w-[100%] h-[100%] z-1 " eventSource={container}>
+ <Canvas className="canvas top-0 right-0 w-[100vw] h-[100%] " eventSource={container}>
 
         <View.Port/>
 
 </Canvas>
 
- <div className="invisible sm:visible absolute top-0 right-0  h-[100%] lg:w-[32vw] md:w-[40vw] border-primary  border-2 flex justify-center items-end z-10">
+ <div className="invisible sm:visible absolute top-0 right-0  h-[80%] lg:w-[32vw] md:w-[40vw] border-background rounded-lg  border-4 flex justify-center items-end z-[1] flow ">
       {/* <img src="/icons/icons8-play-pause-48.png" /> */}
-          <svg className="m-20 hover:cursor-pointer hover:scale-110 transition-all duration-500 hover:ease-in-out fill-primary  border-2 rounded-lg p-2 border-primary " version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+          <svg className="m-20 hover:cursor-pointer hover:scale-110 transition-all duration-500 hover:ease-in-out  border-4 rounded-lg p-2 border-background " version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
             width="40px" height="40px" viewBox="0 0 45.974 45.975"
-            xml:space="preserve">
+            xmlSpace="preserve">
             <g>
               <g>
                 <g>

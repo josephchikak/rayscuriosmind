@@ -36,6 +36,7 @@ useEffect(() =>{
 
 const size = useAspect(1800, 1000)
 
+
 const viewport = useThree(state => state.viewport)
 
 // console.log(size)
@@ -108,20 +109,26 @@ const trackMousePos = () =>{
 
 }
 
+const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
+
 
 
 useFrame(({gl}) => {
 
 
 
-    // gl.setPixelRatio((Math.min(window.devicePixelRatio, 2)))
+    gl.setPixelRatio((Math.min(window.devicePixelRatio, 2)))
       
-    // gl.setClearColor('#E24E1B')
+    gl.setClearColor('#070600')
 
-    // gl.toneMapping = THREE.ACESFilmicToneMapping
-    gl.toneMapping = THREE.LinearToneMapping 
-    gl.toneMappingExposure =  0.9
-    gl.antialias = true
+    gl.toneMapping = THREE.ACESFilmicToneMapping
+    gl.outputColorSpace = THREE.SRGBColorSpace
+    // gl.toneMapping = THREE.LinearToneMapping 
+    // gl.toneMappingExposure =  0.9
+
 
 
 
@@ -145,7 +152,7 @@ useFrame(({gl}) => {
   return (
     <>
         
-        <OrthographicCamera  near={-1000} far={1000}  makeDefault position={[0,0,2]} left={-0.5} right={0.5} top={0.5} bottom={-0.5} />
+        <OrthographicCamera  near={-1000} far={1000}  makeDefault position={[0,0,2]} left={sizes.width / -2} right={sizes.width / 2} top={sizes.height / 2} bottom={sizes.height / -2} />
         {/* <OrbitControls/> */}
         {/* <mesh scale={size} >
             <planeGeometry args={[1,1, 1,1]}/>

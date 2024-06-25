@@ -2,7 +2,7 @@ import JournalEntry from "./components/JournalEntry"
 import './journal.css'
 import P5sketch from "./p5Js/Sketch"
 import Scene from "./components/Scene"
-import { motion, useScroll } from 'framer-motion'
+import { delay, motion, useScroll } from 'framer-motion'
 import About from "./components/About"
 import { Canvas , useFrame} from "@react-three/fiber"
 import { Loader } from "@react-three/drei"
@@ -23,25 +23,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const Journal = () => {
 
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
          const locomotiveScroll = new LocomotiveScroll()
 
          const timeline = gsap.timeline({
-                scrollTrigger:{
-                    trigger: document.documentElement,
-                    start:'top',
-                    end: 'bottom',
-                    scrub:true,
-                    toggleActions: 'reverse'
+                // scrollTrigger:{
+                //     trigger: document.documentElement,
+                //     start:'top',
+                //     end: 'bottom',
+                //     scrub:true,
+                //     toggleActions: 'reverse'
                 
 
-                }
+                // }
          })
 
          timeline
-            .to(textRef.current, {opacity: 0 })
+            .from('.hiddenText', {y: '100%', ease: 'Power4.easeOut', stagger: 0.3, delay:0.5, duration:1.5} )
 
     })
 
@@ -91,11 +91,22 @@ const Journal = () => {
     data-scroll 
     // data-scroll-speed='0.5'
     ref={container}
-     className=' w-[100%] h-[100%] text-text flex flex-col bg-background transition-all ease-in-out overflow-hidden'>
-          <div className="h-[80vh] invinsible sm:visible sm:h-[50vh] relative ">
+     className=' w-[100vw] h-[100%] text-text flex flex-col bg-background transition-all ease-in-out overflow-hidden'>
+          <div       
+                    data-scroll 
+                    data-scroll-speed='0.3'
+                    className="h-[100vh] w-[100vw] invinsible sm:visible sm:h-[100vh] relative cursor-none">
                   <Scene/>
 
-          <div className='list-none h-[100%] w-[100vw]  z-1 overflow-hidden absolute '>
+            
+
+          <div className='list-none h-[100%] w-[100vw]  z-1 overflow-hidden absolute  text-background  '>
+                 <div className="absolute left-[50%] bottom-[5%]  animate-bounce">
+                        <svg xmlns="http://www.w3.org/2000/svg" className=" size-10"  fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#E24E1B">
+                         <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5" />
+                        </svg>
+
+                  </div>
                 <nav className="w-[100%]">
                     <ul className="flex p-2 font-gord justify-center z-10 text-[1.25rem] ">
                         <li className="p-2 hover:border-b-primary hover:border-b-2 absolute sm:visible">
@@ -109,12 +120,36 @@ const Journal = () => {
 
                 </nav>
                 {/* <ul className=""> */}
-                    <h1 ref={textRef} className="w-[20%] flex justify-left flex-col font-gord pl-10 sm:pb-20  z-[1000] text-[5.062rem]">
+                <div>
+
+                <div  className="w-[100%] text-background h-[100%] flex justify-left flex-col gap-10 font-gord pl-10 sm:pb-20  z-[1000] sm:text-[10rem] text-[5.062rem]">
+                    <h1  className="relative h-[200px] m-0 overflow-hidden ">
                     {/* <span className="text-[2rem] ">welcome to </span>  */}
-                    ray's curious mind <br/>
-                    <span className="text-[1rem] font-poppins md:w-[50vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">Hi and welcome to my playground</span>
+                     <span className="hiddenText absolute z-2 "> ray's </span>
                     </h1>
+
+                    <h1 className=" relative h-[200px] m-0 overflow-hidden ">
+                    {/* <span className="text-[2rem] ">welcome to </span>  */}
+                        <span className="hiddenText absolute z-2 ">curious</span>  
+                    </h1>
+
+                    <h1 className="relative h-[200px] m-0 overflow-hidden">
+                    {/* <span className="text-[2rem] ">welcome to </span>  */}
+                    <span className=" hiddenText absolute z-2 "> mind </span> 
+                    </h1>
+
+                    <p className="relative h-[1.5rem] m-0 overflow-hidden text-[1rem] font-poppins md:w-[50vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">
+                        <span className=" hiddenText absolute z-2 ">Hi and welcome to my playground</span>
+                    
+                    </p>
+
+                     
+                </div>
+
+                    {/* <div className="border-t-2">
+                    </div> */}
                 {/* </ul> */}
+        </div>
         </div>
 
             </div>
@@ -125,7 +160,7 @@ const Journal = () => {
       
 
 
-            <h2 className="p-5 pl-10 text-[1.5rem] border-b-2 border-primary font-gord">About</h2>
+            <h2 className="p-5 pl-10 text-[10.5rem] border-b-2 border-primary font-gord">About</h2>
 
             <div   
                 className="p-5 flex flex-col md:flex-row h-[100%] sm:h-[100%] w-[100vw] ">
@@ -155,7 +190,7 @@ const Journal = () => {
             </div>
 
         
-            <h2 className="p-5 pl-10 mb-1 text-[1.5rem] border-b-2 border-primary font-gord">Projects</h2>
+            <h2 className="p-5 pl-10 mb-1 text-[10.5rem] border-b-2 border-primary font-gord">Projects</h2>
 
             <div 
                     data-scroll 

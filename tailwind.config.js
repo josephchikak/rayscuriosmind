@@ -20,7 +20,9 @@ export default {
       'thunder' : ['thunder', 'serif'],
       'poppins' :['poppins', 'san-serif']
     },
-    extend: {},
+    extend: {
+ 
+    },
   },
   plugins: [],
 }
