@@ -18,12 +18,12 @@ const JournalCard = ( {entry, images, url, code} ) => {
             scrollTrigger:{
                 trigger: card.current,
                 start:'0px bottom',
-                end: '400px bottom',
+                end: '500px bottom',
                 // markers: true,
                 scrub:true,
                 // toggleActions: 'reverse'
             },
-            opacity: 0,
+            // opacity: 0,
             // delay:1,
             y:'-20px',
             duration:1,
