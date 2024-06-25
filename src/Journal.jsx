@@ -85,7 +85,7 @@ const Journal = () => {
 
 
   return (
-    <Suspense fallback={null}>
+    // <Suspense fallback={null}>
 
     <div
     data-scroll 
@@ -243,7 +243,7 @@ const Journal = () => {
         </main>
  
   </div>
-  </Suspense>
+//   </Suspense>
 
   )
 }
