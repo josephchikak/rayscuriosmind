@@ -18,6 +18,12 @@
   src: url('./assets/fonts/CabinetGrotesk-Regular.otf');
 }
 
+@font-face {
+  font-family: 'cabinet';
+  src: url('./assets/fonts/Poppins-Regular.ttf');
+}
+
+
 
 
 

@@ -21,7 +21,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
                 end: '400px bottom',
                 // markers: true,
                 scrub:true,
-                toggleActions: 'reverse'
+                // toggleActions: 'reverse'
             },
             opacity: 0,
             // delay:1,
@@ -52,7 +52,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
   return ( 
     <div 
         
-        className="p-5 mb-2 flex h-fit journalCard w-[100%] transition-all ease-in-out rounded-lg border-2 border-primary relative"  ref={card}>
+        className="p-5 mb-2 flex h-fit journalCard w-[100%] transition-all ease-in-out rounded-lg border-2 border-primary relative text-[1rem]"  ref={card}>
         <div
     
 
@@ -94,10 +94,10 @@ const JournalCard = ( {entry, images, url, code} ) => {
 
                 </div>
 
-           <div className='ml-5 h-auto max-w-full rounded-lg text-[black] font-entryFont flex flex-col gap-4 justify-between'>
+           <div className='ml-5 h-auto max-w-full rounded-lg text-[black] font-poppins  flex flex-col gap-4 justify-between'>
              {/* <h3 className='text-[2em]'> enry title</h3> */}
              <div>
-                 <p className='sm:text-lg sm:w-fit w-[50vw] text-text'> {entry} </p>
+                 <p className='sm:w-fit w-[50vw] text-text sm:text-[1rem]'> {entry} </p>
                
                  <div className='flex flex-col pt-2'>
 

@@ -17,7 +17,8 @@ export default {
     fontFamily: {
       'entryFont': ["adobe-garamond-pro", 'serif'],
       'gord' : ['Gord', 'serif'],
-      'thunder' : ['thunder', 'serif']
+      'thunder' : ['thunder', 'serif'],
+      'poppins' :['poppins', 'san-serif']
     },
     extend: {},
   },
