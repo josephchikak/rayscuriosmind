@@ -191,7 +191,7 @@ const Journal = () => {
 
         
             <h2 className="p-5 pl-10 mb-1 text-[2rem] sm:text-[10.5rem] border-b-2 border-primary font-gord">Projects</h2>
-          <Suspense fallback={<p> loading projects</p>}>
+          
 
             <div 
                     data-scroll 
@@ -209,7 +209,7 @@ const Journal = () => {
             </div> */}
 
          </div>
-         </Suspense>
+        
          
 
          <div id="footer" className="w-[100%] h-[20vh] border-t-primary border-t-2 p-5 flex flex-col justify-end">
