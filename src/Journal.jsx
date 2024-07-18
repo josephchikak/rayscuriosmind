@@ -122,18 +122,18 @@ const Journal = () => {
                 {/* <ul className=""> */}
                 <div>
 
-                <div  className="w-[100%] text-background h-[100%] flex justify-left flex-col gap-10 font-gord pl-10 sm:pb-20  z-[1000] sm:text-[10rem] text-[5.062rem]">
-                    <h1  className="relative h-[200px] m-0 overflow-hidden ">
+                <div  className="w-[100%] text-background h-[60vh] sm:h-[100%] flex justify-left flex-col gap-10 font-gord pl-10 sm:pb-20 pt-10 sm:pt-0 z-[1000] sm:text-[10rem] text-[5.062rem]">
+                    <h1  className="relative h-[300px] sm:h-[200px] m-0 overflow-hidden ">
                     {/* <span className="text-[2rem] ">welcome to </span>  */}
                      <span className="hiddenText absolute z-2 "> ray's </span>
                     </h1>
 
-                    <h1 className=" relative h-[200px] m-0 overflow-hidden ">
+                    <h1 className=" relative h-[300px] sm:h-[200px] m-0 overflow-hidden ">
                     {/* <span className="text-[2rem] ">welcome to </span>  */}
                         <span className="hiddenText absolute z-2 ">curious</span>  
                     </h1>
 
-                    <h1 className="relative h-[200px] m-0 overflow-hidden">
+                    <h1 className="relative h-[300px] sm:h-[200px] m-0 overflow-hidden">
                     {/* <span className="text-[2rem] ">welcome to </span>  */}
                     <span className=" hiddenText absolute z-2 "> mind </span> 
                     </h1>
@@ -160,10 +160,10 @@ const Journal = () => {
       
 
 
-            <h2 className="p-5 pl-10 text-[10.5rem] border-b-2 border-primary font-gord">About</h2>
+            <h2 className="p-5 pl-10 text-[2rem] sm:text-[10.5rem] border-b-2 border-primary font-gord">About</h2>
 
             <div   
-                className="p-5 flex flex-col md:flex-row h-[100%] sm:h-[100%] w-[100vw] ">
+                className="p-5 flex flex-col md:flex-row h-[50%] sm:h-[100%] w-[100vw] ">
 
                 <About/>
 
@@ -190,7 +190,8 @@ const Journal = () => {
             </div>
 
         
-            <h2 className="p-5 pl-10 mb-1 text-[10.5rem] border-b-2 border-primary font-gord">Projects</h2>
+            <h2 className="p-5 pl-10 mb-1 text-[2rem] sm:text-[10.5rem] border-b-2 border-primary font-gord">Projects</h2>
+          <Suspense fallback={<p> loading projects</p>}>
 
             <div 
                     data-scroll 
@@ -208,6 +209,8 @@ const Journal = () => {
             </div> */}
 
          </div>
+         </Suspense>
+         
 
          <div id="footer" className="w-[100%] h-[20vh] border-t-primary border-t-2 p-5 flex flex-col justify-end">
             <div className="flex pb-5 pt-5">

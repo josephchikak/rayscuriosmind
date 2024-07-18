@@ -20,7 +20,7 @@ const container = useRef()
 
 
 
-    <View index={1} className="absolute top-0 w-[100vw] sm:w-[100%] h-[80%] p-5  bg-text ">
+    <View index={1} className="absolute top-0 w-[100vw] sm:w-[100%] h-[80vh] sm:h-[80%] p-5  bg-text ">
 
 
         <LandingPage/>
@@ -62,15 +62,15 @@ const container = useRef()
 
 </View> */}
 
- <Canvas className="canvas top-0 right-0 w-[100vw] h-[100%] " eventSource={container}>
+ <Canvas className="canvas top-0 right-0 w-[100vw]  sm:h-[100%] " eventSource={container}>
 
         <View.Port/>
 
 </Canvas>
 
- <div className="invisible sm:visible absolute top-0 right-0  h-[80%] lg:w-[32vw] md:w-[40vw] border-background rounded-lg  border-4 flex justify-center items-end z-[1] flow ">
+ <div className="invisible absolute top-0 right-0  h-[80%] lg:w-[32vw] md:w-[40vw] rounded-lg  border-4 flex justify-center items-end z-[1] flow ">
       {/* <img src="/icons/icons8-play-pause-48.png" /> */}
-          <svg className="m-20 hover:cursor-pointer hover:scale-110 transition-all duration-500 hover:ease-in-out  border-4 rounded-lg p-2 border-background " version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
+          {/* <svg className="m-20 hover:cursor-pointer hover:scale-110 transition-all duration-500 hover:ease-in-out  border-4 rounded-lg p-2 border-background " version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
             width="40px" height="40px" viewBox="0 0 45.974 45.975"
             xmlSpace="preserve">
             <g>
@@ -87,7 +87,7 @@ const container = useRef()
                 </g>
               </g>
             </g>
-          </svg>
+          </svg> */}
  </div>
 
 
