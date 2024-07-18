@@ -42,7 +42,7 @@ const JournalEntry = () => {
    
 
       <div className=" w-[100%] h-[100%] p-5 sm:columns-2">
-         { entries.length ?
+         { 
 
           
             
@@ -50,8 +50,7 @@ const JournalEntry = () => {
               
             
 
-            :
-           <Loading/>
+       
     
           }
 
