@@ -76,7 +76,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
                  <div className='w-[100%]'>
 
                   { (images[0].fields.description === 'video') ? 
-                      <video muted={false} className='h-auto w-[100%] sm:h-auto sm:w-[100%] border-2 border-primary rounded-lg' controls >
+                      <video muted={true} className='h-auto w-[100%] sm:h-auto sm:w-[100%] border-2 border-primary rounded-lg' controls >
                       <source src={`${mainPic}`} type="video/mp4" />
     
                       </video> 
@@ -84,7 +84,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
 
                   :
 
-                  <img  className="lg:h-[250px] h-auto max-w-full rounded-lg border-2 border-primary" 
+                  <img  className="lg:h-[250px] object-cover h-auto max-w-full rounded-lg border-2 border-primary" 
                   src={`${mainPic}`}/> 
                   }
 
@@ -94,7 +94,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
 
                 </div>
 
-           <div className='ml-5 h-auto max-w-full rounded-lg text-text font-poppins  flex flex-col gap-4 justify-between'>
+           <div className='ml-5 h-auto max-w-full rounded-lg text-text font-inter  flex flex-col gap-4 justify-between'>
              {/* <h3 className='text-[2em]'> enry title</h3> */}
              <div>
                  <p className='sm:w-fit w-[50vw] text-text sm:text-[0.9rem]'> {entry} </p>
@@ -120,7 +120,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
                  </div>
 
              </div>
-             <div className='flex flex-row gap-2 items-end jus'>
+             <div className='flex flex-row gap-2 items-end'>
 
 
                 {

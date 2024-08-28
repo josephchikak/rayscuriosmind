@@ -18,7 +18,8 @@ export default {
       'entryFont': ["adobe-garamond-pro", 'serif'],
       'gord' : ['Gord', 'serif'],
       'thunder' : ['thunder', 'serif'],
-      'poppins' :['poppins', 'san-serif']
+      'poppins' :['poppins', 'san-serif'],
+      'inter': ['inter', 'san-serif']
     },
     extend: {
  

@@ -114,9 +114,9 @@ const Journal = () => {
 
                   </div>
                 <nav className="w-[100%]">
-                    <ul className="flex p-2 font-gord justify-center z-10 text-[1.25rem] ">
-                        <li className="p-2 hover:border-b-primary hover:border-b-2 absolute sm:visible">
-                            under constuction 
+                    <ul className="flex p-2 font-gord justify-center z-10 text-[0.7rem] ">
+                        <li className="p-2 font-inter hover:border-b-primary hover:border-b-2 absolute sm:visible">
+                            UNDER CONSTRUCTION 
                         </li>
 
                         {/* <li className="p-1 hover:cursor-pointer hover:border-b-primary hover:border-b-4">
@@ -144,8 +144,8 @@ const Journal = () => {
                     <span className=" hiddenText absolute z-2 "> mind </span> 
                     </h1>
 
-                    <p className="relative h-[1.5rem] m-0 overflow-hidden text-[1rem] font-poppins md:w-[50vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">
-                        <span className=" hiddenText absolute z-2 ">Hi and welcome to my playground</span>
+                    <p className="relative h-[1.5rem] m-0 overflow-hidden text-[0.8rem] font-inter md:w-[100vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">
+                        <span className=" hiddenText absolute z-2 flex sm:w-[90vw] justify-between"><span>WELCOME</span> <span>TO MY</span> <span>PLAYGROUND</span></span>
                     
                     </p>
 
