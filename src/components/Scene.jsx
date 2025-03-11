@@ -1,7 +1,7 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Box, OrbitControls, useAnimations, useGLTF, PresentationControls, Float , View, OrthographicCamera, useAspect} from "@react-three/drei"
 import { useRef } from "react"
-import  Monitor  from "./Monitor"
+
 import WalkMan from "./WalkMan"
 import * as THREE from 'three'
 import LandingPage from "./LandingPage"
@@ -57,10 +57,7 @@ const container = useRef()
 
 </View> 
 
-{/* <View index={3} className="absolute top-[50px] left-[79%] w-[500px] z-1 h-[500px] bg-[] bg-cover bg-center border-2 rounded-lg border-black hover:mouse-pointer">
-        <Monitor/>
 
-</View> */}
 
  <Canvas className="canvas top-0 right-0 w-[100vw]  sm:h-[100%] " eventSource={container}>
 

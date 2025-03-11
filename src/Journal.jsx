@@ -186,10 +186,10 @@ const Journal = () => {
                     
                                     
                 className="md:h-[50vh] md:w-[50%] invisible md:visible hover:cursor-pointer">
-
+{/* 
                 <Canvas>
                     <Monitor/>
-                </Canvas>
+                </Canvas> */}
 
                 </motion.div>
 
@@ -239,7 +239,7 @@ const Journal = () => {
             </div>
 
             <div className="flex justify-between">
-            <p>© all rights reserved 2024 </p>
+            <p>© all rights reserved 2025 </p>
 
             <p className="text-[0.9rem]">designed by Joseph Chikak</p>
             </div>
