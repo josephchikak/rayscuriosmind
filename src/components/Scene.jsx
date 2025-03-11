@@ -20,6 +20,9 @@ const container = useRef()
 
 
 
+
+
+
     <View index={1} className="absolute top-0 w-[100vw] sm:w-[100%] h-[80vh] sm:h-[80%] p-5  bg-text ">
 
 
@@ -66,6 +69,7 @@ const container = useRef()
 </Canvas>
 
  <div className="invisible absolute top-0 right-0  h-[80%] lg:w-[32vw] md:w-[40vw] rounded-lg  border-4 flex justify-center items-end z-[1] flow ">
+
       {/* <img src="/icons/icons8-play-pause-48.png" /> */}
           {/* <svg className="m-20 hover:cursor-pointer hover:scale-110 transition-all duration-500 hover:ease-in-out  border-4 rounded-lg p-2 border-background " version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
             width="40px" height="40px" viewBox="0 0 45.974 45.975"

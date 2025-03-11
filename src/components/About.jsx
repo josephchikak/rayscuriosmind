@@ -11,6 +11,13 @@ const About = () => {
         </p>
 
         <div className="pt-10 font-inter text-[1.2rem] ">
+
+
+<div className="border-radius:12px absolute z-10 right-20" >
+  <p className="p-2 font-gord">listen to my music 🎵 </p>
+<iframe src="https://open.spotify.com/embed/artist/0Z7d6NoIt6baFGelxJyy1r?utm_source=generator" width="100%" height="352" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+</div>
           <h2 className="text-primary"> My skills include: </h2> 
         
           <p className="pt-5 text-[1rem]">
