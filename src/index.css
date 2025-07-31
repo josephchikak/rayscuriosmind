@@ -12,6 +12,12 @@
   src: url('./assets/fonts/Thunder-ExtraBoldHC.otf');
 }
 
+@font-face {
+  font-family: 'modern';
+  src: url('./assets/fonts/Modernist\ Regular.otf');
+}
+
+
 
 @font-face {
   font-family: 'cabinet';
