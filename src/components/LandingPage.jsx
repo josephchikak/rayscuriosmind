@@ -7,11 +7,10 @@ import {
 import { useRef, useState, useEffect, useMemo } from "react";
 import * as THREE from "three";
 
-const mouse = new THREE.Vector2(0, 0);
-const prevMouse = new THREE.Vector2(0, 0);
-
 const LandingPage = () => {
   const stickers = useRef([]);
+  const mouse = useRef(new THREE.Vector2(0, 0));
+  const prevMouse = useRef(new THREE.Vector2(0, 0));
   const [currentStickerUrl, setCurrentStickerUrl] = useState("/stickers/Asset 1.webp");
   
   // Transition state
@@ -38,15 +37,15 @@ const LandingPage = () => {
 
   // const
 
-useEffect(() => {
-  const handleMouseMove = (e) => {
-    mouse.x = e.clientX - viewport.width / 2;
-    mouse.y = viewport.height / 2 - e.clientY;
-  };
-  
-  window.addEventListener("mousemove", handleMouseMove);
-  return () => window.removeEventListener("mousemove", handleMouseMove);
-}, [viewport]);
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      mouse.current.x = e.clientX - viewport.width / 2;
+      mouse.current.y = viewport.height / 2 - e.clientY;
+    };
+    
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [viewport]);
 
 
 
@@ -87,28 +86,27 @@ useEffect(() => {
 
   const trackMousePos = () => {
     // Always update target position for smooth following
-  
+    setPositions(prev => ({
+      ...prev,
+      target: { x: mouse.current.x, y: mouse.current.y }
+    }));
     
     // Only change sticker image if enough movement and delay allows
     if (
-      Math.abs(mouse.x - prevMouse.x) < 4 ||
-      Math.abs(mouse.y - prevMouse.y) < 4
+      Math.abs(mouse.current.x - prevMouse.current.x) < 4 ||
+      Math.abs(mouse.current.y - prevMouse.current.y) < 4
     ) {
       //do nothing
     } else {
-      setNewSticker(mouse.x, mouse.y);
-      setPositions(prev => ({
-        ...prev,
-        target: { x: mouse.x, y: mouse.y }
-      }));
+      setNewSticker(mouse.current.x, mouse.current.y);
 
       currentSticker = (currentSticker + 1) % 100;
 
       // console.log(currentSticker)
     }
 
-    prevMouse.x = mouse.x;
-    prevMouse.y = mouse.y;
+    prevMouse.current.x = mouse.current.x;
+    prevMouse.current.y = mouse.current.y;
   };
 
   const sizes = {
@@ -133,16 +131,15 @@ useEffect(() => {
       const newX = positions.current.x + (positions.target.x - positions.current.x) * lerpFactor;
       const newY = positions.current.y + (positions.target.y - positions.current.y) * lerpFactor;
       
-      setPositions(prev => ({
-        ...prev,
-        current: { x: newX, y: newY }
-      }));
+      // Update position directly without state to avoid re-renders
+      positions.current.x = newX;
+      positions.current.y = newY;
       stickers.current.position.x = newX;
       stickers.current.position.y = newY;
     }
 
     if (stickers.current && stickers.current.material) {
-      stickers.current.material.opacity *= 0.998;
+      stickers.current.material.opacity *= 0.997;
     }
   });
 
@@ -184,7 +181,7 @@ useEffect(() => {
       <Image
         ref={stickers}
         url={currentStickerUrl}
-        scale={250}
+        scale={200}
         radius={10}
         fit="contain"
         transparent
