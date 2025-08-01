@@ -1,40 +1,32 @@
-import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import {useThree, useFrame } from "@react-three/fiber";
 import {
-  Box,
-  OrbitControls,
-  useAnimations,
-  useGLTF,
-  Text,
-  Float,
-  useTexture,
   OrthographicCamera,
   useAspect,
+  Image,
 } from "@react-three/drei";
-import { useEffect, useRef, useState } from "react";
-import vertexShader from "./shaders/vertex.glsl";
-import fragmentShader from "./shaders/fragment.glsl";
+import { useRef, useState, useEffect, useMemo } from "react";
 import * as THREE from "three";
+
+const mouse = new THREE.Vector2(0, 0);
+const prevMouse = new THREE.Vector2(0, 0);
 
 const LandingPage = () => {
   const stickers = useRef([]);
-
-  const [sticker, setSticker] = useState(
-    useTexture("/stickers/Asset " + 1 + ".webp")
-  );
-  // const [sticker, setSticker] = useState('')
-
-  // const stickersUrl = ['/stickers/Asset 1.png','/stickers/Asset 2.png','/stickers/Asset 3.png','/stickers/Asset 4.png','/stickers/Asset 5.png','/stickers/Asset 6.png','/stickers/Asset 7.png','/stickers/Asset 8.png','/stickers/Asset 9.png','/stickers/Asset 10.png']
-  const stickerUrls = Array.from(
-    { length: 6 },
-    (_, i) => `/stickers/Asset ${i + 1}.webp`
-  );
-  const stickersTexture = useTexture(stickerUrls);
-  stickersTexture.forEach((texture) => {
-    texture.magFilter = THREE.NearestFilter;
-    texture.minFilter = THREE.LinearMipMapLinearFilter;
+  const [currentStickerUrl, setCurrentStickerUrl] = useState("/stickers/Asset 1.webp");
+  
+  // Transition state
+  const [positions, setPositions] = useState({
+    target: { x: 0, y: 0 },
+    current: { x: 0, y: 0 }
   });
 
-  useEffect(() => {}, []);
+  const stickerUrls = Array.from(
+    { length: 9 },
+    (_, i) => `/stickers/Asset ${i + 1}.webp`
+  );
+
+  // Memoized lerp factor for performance
+  const lerpFactor = useMemo(() => 0.04, []);
 
   // console.log(stickers)
 
@@ -46,44 +38,69 @@ const LandingPage = () => {
 
   // const
 
-  const mouse = new THREE.Vector2(0, 0);
-  const prevMouse = new THREE.Vector2(0, 0);
-
-  window.addEventListener("mousemove", (e) => {
+useEffect(() => {
+  const handleMouseMove = (e) => {
     mouse.x = e.clientX - viewport.width / 2;
     mouse.y = viewport.height / 2 - e.clientY;
-  });
+  };
+  
+  window.addEventListener("mousemove", handleMouseMove);
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, [viewport]);
+
+
 
   let currentSticker = 0;
 
   const setNewSticker = (x, y) => {
-    const n = Math.floor(Math.random() * stickersTexture.length) + 1;
+    if (stickers.current && stickers.current.userData && stickers.current.userData.canPlace === false) {
+      return; // Don't place sticker if delay is active
+    }
+    
+    const n = Math.floor(Math.random() * stickerUrls.length);
+    const selectedUrl = stickerUrls[n];
+    
+    setCurrentStickerUrl(selectedUrl);
+    setPositions(prev => ({
+      ...prev,
+      target: { x, y }
+    }));
 
-    setSticker(stickersTexture[n]);
-
-    let mesh = stickers.current;
-
-    // console.log(mesh)
-
-    mesh.visible = true;
-
-    mesh.position.x = x;
-    mesh.position.y = y;
-
-    mesh.material.opacity = 1;
+    let image = stickers.current;
+    image.visible = true;
+    image.material.opacity = 1;
+    
+    // Set delay flag on the ref
+    if (image.userData) {
+      image.userData.canPlace = false;
+    }
+    
+    // Set delay before allowing next sticker
+    setTimeout(() => {
+      if (stickers.current && stickers.current.userData) {
+        stickers.current.userData.canPlace = true;
+      }
+    }, 800); // 500ms delay - adjust this value as needed
   };
 
   // console.log(stickers.current[0])
 
   const trackMousePos = () => {
-    // setNewSticker()
+    // Always update target position for smooth following
+  
+    
+    // Only change sticker image if enough movement and delay allows
     if (
       Math.abs(mouse.x - prevMouse.x) < 4 ||
       Math.abs(mouse.y - prevMouse.y) < 4
     ) {
       //do nothing
     } else {
-      setNewSticker(mouse.x, mouse.y, currentSticker);
+      setNewSticker(mouse.x, mouse.y);
+      setPositions(prev => ({
+        ...prev,
+        target: { x: mouse.x, y: mouse.y }
+      }));
 
       currentSticker = (currentSticker + 1) % 100;
 
@@ -109,19 +126,24 @@ const LandingPage = () => {
     // gl.toneMapping = THREE.LinearToneMapping
     // gl.toneMappingExposure =  0.9
 
-    // stickers.current.position.y = mouse.y
-    // stickers.current.position.x = mouse.x
-
     trackMousePos();
 
-    stickers.current.material.opacity *= 0.999;
+    // Handle smooth position transitions
+    if (stickers.current && stickers.current.visible) {
+      const newX = positions.current.x + (positions.target.x - positions.current.x) * lerpFactor;
+      const newY = positions.current.y + (positions.target.y - positions.current.y) * lerpFactor;
+      
+      setPositions(prev => ({
+        ...prev,
+        current: { x: newX, y: newY }
+      }));
+      stickers.current.position.x = newX;
+      stickers.current.position.y = newY;
+    }
 
-    // stickers.current.material.map.minFilter = THREE.LinearFilter;
-
-    // stickers.current.forEach(sticker => {
-    // })
-
-    // console.log(stickers.current)
+    if (stickers.current && stickers.current.material) {
+      stickers.current.material.opacity *= 0.998;
+    }
   });
 
   return (
@@ -137,7 +159,7 @@ const LandingPage = () => {
         bottom={sizes.height / -2}
       />
       {/* <OrbitControls/> */}
-      {/* <mesh scale={size} >
+      {/* <mesh scale={200} >
             <planeGeometry args={[1,1, 1,1]}/>
             <shaderMaterial
                 fragmentShader={fragmentShader}
@@ -159,10 +181,15 @@ const LandingPage = () => {
            
         })} */}
       <ambientLight intensity={0.5} />
-      <mesh scale={200} ref={stickers} visible={false}>
-        <planeGeometry args={[1, 1]} />
-        <meshStandardMaterial map={sticker} transparent={true} />
-      </mesh>
+      <Image
+        ref={stickers}
+        url={currentStickerUrl}
+        scale={250}
+        radius={10}
+        fit="contain"
+        transparent
+        visible={false}
+      />
     </>
   );
 };

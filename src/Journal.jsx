@@ -1,16 +1,11 @@
 import JournalEntry from "./components/JournalEntry";
 import "./journal.css";
-import P5sketch from "./p5Js/Sketch";
 import Scene from "./components/Scene";
-import { delay, motion, useScroll } from "framer-motion";
 import About from "./components/About";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Loader } from "@react-three/drei";
-import Monitor from "./components/Monitor";
 import { gsap } from "gsap";
-import { useEffect, useRef, useLayoutEffect, Suspense } from "react";
+import { useEffect, useRef, } from "react";
+// @ts-ignore
 import LocomotiveScroll from "locomotive-scroll";
-
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Journal = () => {
@@ -36,7 +31,7 @@ const Journal = () => {
       delay: 0.5,
       duration: 1.5,
     });
-  });
+  },[]);
 
   const container = useRef();
   const textRef = useRef(null);
@@ -157,33 +152,16 @@ const Journal = () => {
             About
           </h2>
 
-          <div className="p-5 flex flex-col md:flex-row h-[50%] sm:h-[100%] w-[100vw] ">
+          <div className="p-5 flex flex-col md:flex-row h-[50%] sm:h-fit w-[100vw] ">
             <About />
 
-            <motion.div
-              initial={{ x: 500 }}
-              whileInView={{
-                x: 0,
-                transition: {
-                  type: "spring",
-                  duration: 2,
-                },
-              }}
-              // exit={{x: 500}}
-
-              className="md:h-[50vh] md:w-[50%] invisible md:visible hover:cursor-pointer"
-            >
-              {/* 
-                <Canvas>
-                    <Monitor/>
-                </Canvas> */}
-            </motion.div>
+         
           </div>
 
           <h2 className="p-5 pl-10 mb-1 text-[2rem] sm:text-[10.5rem] border-b-2 border-primary font-gord">
             Projects
           </h2>
-{/* 
+
           <div
             data-scroll
             data-scroll-speed="0.1"
@@ -192,7 +170,7 @@ const Journal = () => {
             <JournalEntry />
 
          
-          </div> */}
+          </div>
 
           <div
             id="footer"

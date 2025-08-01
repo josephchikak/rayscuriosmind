@@ -1,7 +1,7 @@
 
 const About = () => {
   return (
-    <div className=" sm:h-[20vh] md:w-[50%] w-[100%] h-[100%] p-6 flex flex-col">
+    <div className="  md:w-[50%] w-[100%] h-[100%] p-6 flex flex-col">
         {/* <h1 className="font-gord text-[26px]">About</h1> */}
         <p className="font-inter w-[100%] text-[1rem] pt-5 ">
         I am Joseph but most people call me ray. 
@@ -21,8 +21,7 @@ const About = () => {
           <h2 className="text-primary"> My skills include: </h2> 
         
           <p className="pt-5 text-[1rem]">
-          Three.js, <br /> GLSL,<br /> React,<br /> CSS, <br />p5.js, <br />HTML,<br />Blender
-
+          Three.js,  GLSL,  React,  CSS, p5.js, Nextjs, Blender
           </p>
         </div>
 
