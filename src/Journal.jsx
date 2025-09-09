@@ -76,7 +76,7 @@ const Journal = () => {
         <div
           data-scroll
           data-scroll-speed="0.3"
-          className="h-[100vh] w-[100vw] invinsible sm:visible sm:h-[100vh] relative cursor-none"
+          className="h-[100vh] w-[100vw] z-10 invinsible sm:visible sm:h-[100vh] relative "
         >
           {/* <Suspense fallback={<Loading/>}> */}
 
@@ -84,7 +84,7 @@ const Journal = () => {
 
           {/* </Suspense> */}
 
-          <div className="list-none h-[100%] w-[100vw]  z-1 overflow-hidden absolute  text-background  ">
+          <div className="list-none h-[100%] w-[100vw]  -z-1 overflow-hidden absolute bg-[url('/raytheboffin.jpg')] bg-cover bg-center text-primary  ">
             <div className="absolute left-[50%] bottom-[5%]  animate-bounce">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ const Journal = () => {
             </nav>
             {/* <ul className=""> */}
             <div>
-              <div className="w-[100%] text-background h-[60vh] sm:h-[100%] flex justify-left flex-col gap-10 font-modern pl-10 sm:pb-20 pt-10 sm:pt-0 z-[1000] sm:text-[10rem] text-[5.062rem]">
+              <div className="w-[100%] text-primary h-[60vh] sm:h-[100%] flex justify-left flex-col gap-10 font-modern pl-10 sm:pb-20 pt-10 sm:pt-0 z-[1000] sm:text-[10rem] text-[5.062rem]">
                 <h1 className="relative h-[300px] sm:h-[200px] m-0 overflow-hidden ">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
                   <span className="hiddenText absolute z-2 "> RAY </span>
