@@ -84,7 +84,7 @@ const Journal = () => {
 
           {/* </Suspense> */}
 
-          <div className="list-none h-[100%] w-[100vw]  -z-1 overflow-hidden absolute bg-[url('/raytheboffin.jpg')] bg-cover bg-center text-primary  ">
+          <div className="list-none h-[100%] w-[100vw]  -z-1 overflow-hidden absolute bg-text bg-cover bg-center text-primary  ">
             <div className="absolute left-[50%] bottom-[5%]  animate-bounce">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,20 +114,20 @@ const Journal = () => {
             </nav>
             {/* <ul className=""> */}
             <div>
-              <div className="w-[100%] text-primary h-[60vh] sm:h-[100%] flex justify-left flex-col gap-10 font-modern pl-10 sm:pb-20 pt-10 sm:pt-0 z-[1000] sm:text-[10rem] text-[5.062rem]">
-                <h1 className="relative h-[300px] sm:h-[200px] m-0 overflow-hidden ">
+              <div className="w-[100%] text-secondary h-[60vh] sm:h-[100%] flex justify-left flex-col gap-10 font-modern pl-10 sm:pb-20 pt-10 sm:pt-0 z-[1000] sm:text-[10rem] text-[5.062rem]">
+                <h1 className="relative text-2xl h-[300px] sm:h-[200px] m-0 overflow-hidden ">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className="hiddenText absolute z-2 "> RAY </span>
+                  <span className="hiddenText absolute z-2 top-[50%]"> RAY THE BOFFIN </span>
                 </h1>
 
                 <h1 className=" relative h-[300px] sm:h-[200px] m-0 overflow-hidden ">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className="hiddenText absolute z-2 ">THE</span>
+                  <span className="hiddenText absolute z-2 "> DREAM</span>
                 </h1>
 
                 <h1 className="relative h-[300px] sm:h-[200px] m-0 overflow-hidden">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className=" hiddenText absolute z-2 "> BOFFIN </span>
+                  <span className=" hiddenText absolute z-2 "> IMPOSSIBLE </span>
                 </h1>
 
                 <p className="relative h-[1.5rem] m-0 overflow-hidden text-[0.8rem] font-inter md:w-[100vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">

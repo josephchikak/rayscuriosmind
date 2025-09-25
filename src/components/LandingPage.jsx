@@ -1,68 +1,111 @@
-import {useThree, useFrame } from "@react-three/fiber";
-import {
-  OrthographicCamera,
-  Image,
-} from "@react-three/drei";
-import { useRef, useState, useEffect } from "react";
+import { useThree, useFrame } from "@react-three/fiber";
+import { useTexture, OrthographicCamera, useAspect } from "@react-three/drei";
+import { useEffect, useRef, useState } from "react";
+
 import * as THREE from "three";
 
 const LandingPage = () => {
   const stickers = useRef([]);
-  const mouse = useRef(new THREE.Vector2(0, 0));
-  const [currentStickerUrl, setCurrentStickerUrl] = useState("/stickers/Asset 1.webp");
-  const lastStickerChange = useRef(0);
-  const stickerChangeDelay = 200; // 200ms delay between sticker changes
 
-  const stickerUrls = Array.from(
-    { length: 9 },
-    (_, i) => `/stickers/Asset ${i + 1}.webp`
+  const [sticker, setSticker] = useState(
+    useTexture("/stickers/Asset " + 1 + ".webp")
   );
+  // const [sticker, setSticker] = useState('')
+
+  // const stickersUrl = ['/stickers/Asset 1.png','/stickers/Asset 2.png','/stickers/Asset 3.png','/stickers/Asset 4.png','/stickers/Asset 5.png','/stickers/Asset 6.png','/stickers/Asset 7.png','/stickers/Asset 8.png','/stickers/Asset 9.png','/stickers/Asset 10.png']
+  const stickersTexture = [];
+
+  for (let i = 0; i < 10; i++) {
+    stickersTexture.push(useTexture("/stickers/Asset " + (i + 1) + ".webp"));
+    stickersTexture[i].magFilter = THREE.NearestFilter;
+    stickersTexture[i].minFilter = THREE.LinearMipMapLinearFilter;
+    stickersTexture[i].flipY = false;
+    stickersTexture[i].colorSpace = THREE.SRGBColorSpace;
+  }
+
+  useEffect(() => {}, []);
+
+  // console.log(stickers)
+
+  const size = useAspect(1800, 1000);
 
   const viewport = useThree((state) => state.viewport);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      mouse.current.x = e.clientX - viewport.width / 2;
-      mouse.current.y = viewport.height / 2 - e.clientY;
-      
-      const currentTime = Date.now();
-      
-      // Only change sticker if enough time has passed since last change
-      if (currentTime - lastStickerChange.current > stickerChangeDelay) {
-        const n = Math.floor(Math.random() * stickerUrls.length);
-        const selectedUrl = stickerUrls[n];
-        setCurrentStickerUrl(selectedUrl);
-        lastStickerChange.current = currentTime;
-      }
-      
-      // Position sticker at mouse location
-      if (stickers.current) {
-        stickers.current.visible = true;
-        stickers.current.material.opacity = 1;
-        stickers.current.position.x = mouse.current.x;
-        stickers.current.position.y = mouse.current.y;
-      }
-    };
-    
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [viewport, stickerUrls, stickerChangeDelay]);
+  // console.log(size)
 
-  const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight,
+  // const
+
+  const mouse = new THREE.Vector2(0, 0);
+  const prevMouse = new THREE.Vector2(0, 0);
+
+  window.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX - viewport.width / 2;
+    mouse.y = viewport.height / 2 - e.clientY;
+  });
+
+  let currentSticker = 0;
+
+  const setNewSticker = (x, y, index) => {
+    const n = Math.floor(Math.random() * stickersTexture.length) + 1;
+
+    setSticker(stickersTexture[n]);
+
+    let mesh = stickers.current;
+
+    // console.log(mesh)
+
+    mesh.visible = true;
+
+    mesh.position.x = x;
+    mesh.position.y = y;
+
+    mesh.material.opacity = 1;
+  };
+
+  // console.log(stickers.current[0])
+
+  const trackMousePos = () => {
+    // setNewSticker()
+    if (
+      Math.abs(mouse.x - prevMouse.x) < 8 ||
+      Math.abs(mouse.y - prevMouse.y) < 8
+    ) {
+      //do nothing
+    } else {
+      setNewSticker(mouse.x, mouse.y, currentSticker);
+
+      currentSticker = (currentSticker + 1) % 10;
+
+      // console.log(currentSticker)
+    }
+
+    prevMouse.x = mouse.x;
+    prevMouse.y = mouse.y;
   };
 
   useFrame(({ gl }) => {
-    gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // gl.setPixelRatio((Math.min(window.devicePixelRatio, 2)))
 
-    gl.toneMapping = THREE.ACESFilmicToneMapping;
-    gl.outputColorSpace = THREE.SRGBColorSpace;
+    // gl.setClearColor('#E24E1B')
 
-    // Fade out sticker over time
-    if (stickers.current && stickers.current.material) {
-      stickers.current.material.opacity *= 0.980;
-    }
+    gl.toneMapping = THREE.ACESFilmicToneMapping
+    // gl.toneMapping = THREE.LinearToneMapping;
+    gl.toneMappingExposure = 0.7;
+    gl.antialias = true;
+
+    // stickers.current.position.y = mouse.y
+    // stickers.current.position.x = mouse.x
+
+    trackMousePos();
+
+    stickers.current.material.opacity *= 0.998;
+
+    // stickers.current.material.map.minFilter = THREE.LinearFilter;
+
+    // stickers.current.forEach(sticker => {
+    // })
+
+    // console.log(stickers.current)
   });
 
   return (
@@ -72,21 +115,38 @@ const LandingPage = () => {
         far={1000}
         makeDefault
         position={[0, 0, 2]}
-        left={sizes.width / -2}
-        right={sizes.width / 2}
-        top={sizes.height / 2}
-        bottom={sizes.height / -2}
+        left={-0.5}
+        right={0.5}
+        top={0.5}
+        bottom={-0.5}
       />
-      <ambientLight />
-      <Image
-        ref={stickers}
-        url={currentStickerUrl}
-        scale={100}
-        // radius={20}
-        fit="contain"
-        transparent
-        visible={false}
-      />
+      {/* <OrbitControls/> */}
+      {/* <mesh scale={size} >
+            <planeGeometry args={[1,1, 1,1]}/>
+            <shaderMaterial
+                fragmentShader={fragmentShader}
+                vertexShader={vertexShader}
+                // wireframe
+                // fragmentShader={fragmentShader}
+                // vertexShader={vertexShader}
+            />
+        </mesh> */}
+
+      {/* <Text font="/Satoshi-Medium.woff"  color='black' fontSize={20} position={[0,400,0]} anchorX="center" anchorY="middle" >
+            ray's curious mind
+        </Text> */}
+
+      {/* {stickersTexture.map((texture, index) => {
+            return(
+             
+            )
+           
+        })} */}
+
+      <mesh scale={100} ref={stickers} visible={false} >
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial map={sticker} transparent={true} />
+      </mesh>
     </>
   );
 };
