@@ -52,7 +52,7 @@ const JournalCard = ( {entry, images, url, code} ) => {
   return ( 
     <div 
         
-        className="p-5 mb-2 flex h-fit journalCard w-[100%] bg-background transition-all ease-in-out rounded-lg border-2 border-primary relative text-[1rem]"  ref={card}>
+        className="p-5 mb-2 flex h-fit journalCard w-[100%] bg-text  transition-all ease-in-out rounded-lg border-2 border-primary relative text-[1rem]"  ref={card}>
         <div
     
 
@@ -94,10 +94,10 @@ const JournalCard = ( {entry, images, url, code} ) => {
 
                 </div>
 
-           <div className='ml-5 h-auto max-w-full rounded-lg text-text font-inter  flex flex-col gap-4 justify-between'>
+           <div className='ml-5 h-auto max-w-full rounded-lg text-primary font-inter  flex flex-col gap-4 justify-between'>
              {/* <h3 className='text-[2em]'> enry title</h3> */}
              <div>
-                 <p className='sm:w-fit w-[50vw] text-text sm:text-[0.9rem]'> {entry} </p>
+                 <p className='sm:w-fit w-[50vw] text-background sm:text-[0.9rem]'> {entry} </p>
                
                  <div className='flex flex-col pt-2'>
 

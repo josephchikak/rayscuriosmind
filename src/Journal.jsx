@@ -117,7 +117,7 @@ const Journal = () => {
               <div className="w-[100%] text-secondary h-[60vh] sm:h-[100%] flex justify-left flex-col gap-10 font-modern pl-10 sm:pb-20 pt-10 sm:pt-0 z-[1000] sm:text-[10rem] text-[5.062rem]">
                 <h1 className="relative text-2xl h-[300px] sm:h-[200px] m-0 overflow-hidden ">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className="hiddenText absolute z-2 top-[50%]"> RAY THE BOFFIN </span>
+                  <span className="hiddenText absolute z-2 top-[50%]"> RANG-E </span>
                 </h1>
 
                 <h1 className=" relative h-[300px] sm:h-[200px] m-0 overflow-hidden ">
@@ -132,10 +132,14 @@ const Journal = () => {
 
                 <p className="relative h-[1.5rem] m-0 overflow-hidden text-[0.8rem] font-inter md:w-[100vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">
                   <span className=" hiddenText absolute z-2 flex sm:w-[90vw] justify-between">
-                    <span>WELCOME</span> <span>TO MY</span>{" "}
-                    <span>PLAYGROUND</span>
+                    <span>WHY?</span> <span>WHY?</span>{" "}
+                    <span>WHY?</span>
                   </span>
                 </p> 
+
+                <p className="text-sm text-primary font-light w-1/4">
+                  Creating Digital experiences to tell stories by creating meaningful and interactive moments that resonate with people.
+                </p>
 
                 {/* <img src="/icons/logo.png" alt="bg" className="w-[10%] h-[10%] absolute top-2 right-5 object-cover" />  */}
               </div>
@@ -147,8 +151,8 @@ const Journal = () => {
           </div>
         </div>
 
-        <main className="w-[100%] h-[100%] flex flex-col border-primary border-t-2">
-          <h2 className="p-5 pl-10 text-[2rem] sm:text-[10.5rem] border-b-2 border-primary font-gord">
+        <main className="w-[100%] h-[100%] flex flex-col border-primary border-t-2 bg-tex">
+          <h2 className="p-5 pl-10 text-[2rem]  text-primary  sm:text-[10.5rem] border-b-2 border-primary font-gord">
             About
           </h2>
 
@@ -158,7 +162,7 @@ const Journal = () => {
          
           </div>
 
-          <h2 className="p-5 pl-10 mb-1 text-[2rem] sm:text-[10.5rem] border-b-2 border-primary font-gord">
+          <h2 className="p-5 pl-10 mb-1 text-[2rem]  text-primary sm:text-[10.5rem] border-b-2 border-primary font-gord">
             Projects
           </h2>
 
@@ -174,7 +178,7 @@ const Journal = () => {
 
           <div
             id="footer"
-            className="w-[100%] h-[20vh] border-t-primary border-t-2 p-5 flex flex-col justify-end"
+            className="w-[100%] h-[20vh] bg-text text-secondary border-t-primary border-t-2 p-5 flex flex-col justify-end"
           >
             <div className="flex pb-5 pt-5">
               {/* <a target="_blank" href="https://icons8.com/icon/447/linkedin">LinkedIn</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> */}

@@ -2,6 +2,7 @@ import {useThree, useFrame } from "@react-three/fiber";
 import {
   OrthographicCamera,
   Image,
+useTexture
 } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
@@ -12,6 +13,7 @@ const LandingPage = () => {
   const [currentStickerUrl, setCurrentStickerUrl] = useState("/stickers/Asset 1.webp");
   const lastStickerChange = useRef(0);
   const stickerChangeDelay = 200; // 200ms delay between sticker changes
+
 
   const stickerUrls = Array.from(
     { length: 9 },
@@ -38,6 +40,7 @@ const LandingPage = () => {
       // Position sticker at mouse location
       if (stickers.current) {
         stickers.current.visible = true;
+     
   
         stickers.current.material.opacity = 1;
         stickers.current.position.x = mouse.current.x;

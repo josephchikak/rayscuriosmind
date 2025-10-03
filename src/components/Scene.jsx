@@ -4,7 +4,7 @@ import { useRef } from "react"
 
 // import WalkMan from "./WalkMan"
 import * as THREE from 'three'
-import LandingPage from "./LandingPage"
+import LandingPage from "./LandingPageC"
 
 
 

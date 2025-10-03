@@ -1,7 +1,7 @@
 
 const About = () => {
   return (
-    <div className="  md:w-[50%] w-[100%] h-[100%] p-6 flex flex-col">
+    <div className="  md:w-[50%]  w-[100%] h-[100%] p-6 flex flex-col">
         {/* <h1 className="font-gord text-[26px]">About</h1> */}
         <p className="font-inter w-[100%] text-[1rem] pt-5 ">
         I am Joseph but most people call me ray. 
