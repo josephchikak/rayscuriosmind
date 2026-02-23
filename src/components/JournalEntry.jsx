@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import useContentful from "../utility/useContentful";
 import JournalCard from "./JournalCard";
 
@@ -46,7 +46,7 @@ const JournalEntry = () => {
     <>
      { entries.length ?
 
-      <div className=" w-[100%] h-[100%] p-5 sm:columns-2">
+      <div className="w-full h-full p-3 sm:p-5 columns-1 md:columns-2">
         {
         
           

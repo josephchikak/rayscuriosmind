@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import react from '@vitejs/plugin-react'
+
 
 
 export default {
@@ -19,7 +19,11 @@ export default {
       'gord' : ['Gord', 'serif'],
       'thunder' : ['thunder', 'serif'],
       'poppins' :['poppins', 'san-serif'],
-      'inter': ['inter', 'san-serif']
+      'inter': ['inter', 'san-serif'],
+      'basis': ['basis'],
+      'nudica': ['nudica-mono'],
+      'blackbird': ['blackbird']
+      
     },
     extend: {
  

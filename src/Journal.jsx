@@ -1,14 +1,18 @@
-import JournalEntry from "./components/JournalEntry";
-import "./journal.css";
-import Scene from "./components/Scene";
-import About from "./components/About";
-import { gsap } from "gsap";
-import { useEffect, useRef, } from "react";
+import JournalEntry from "./components/JournalEntry"
+import "./journal.css"
+import Scene from "./components/Scene"
+import About from "./components/About"
+import WebEntry from "./components/WebEntry"
+import { gsap } from "gsap"
+import { useEffect, useRef, useState } from "react"
 // @ts-ignore
-import LocomotiveScroll from "locomotive-scroll";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LocomotiveScroll from "locomotive-scroll"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
+/* eslint-disable */
 const Journal = () => {
+  const [activeTab, setActiveTab] = useState('journal')
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +80,7 @@ const Journal = () => {
         <div
           data-scroll
           data-scroll-speed="0.3"
-          className="h-[100vh] w-[100vw] z-10 invinsible sm:visible sm:h-[100vh] relative "
+          className="h-[100vh] w-full z-10 relative"
         >
           {/* <Suspense fallback={<Loading/>}> */}
 
@@ -103,7 +107,7 @@ const Journal = () => {
             </div>
             <nav className="w-[100%]">
               <ul className="flex p-2 font-gord justify-center z-10 text-[0.7rem] ">
-                <li className="p-2 font-inter hover:border-b-primary hover:border-b-2 absolute sm:visible">
+                <li className="p-2 font-basis hover:border-b-primary hover:border-b-2 absolute sm:visible">
                   UNDER CONSTRUCTION
                 </li>
 
@@ -114,30 +118,31 @@ const Journal = () => {
             </nav>
             {/* <ul className=""> */}
             <div>
-              <div className="w-[100%] text-secondary h-[60vh] sm:h-[100%] flex justify-left flex-col gap-10 font-modern pl-10 sm:pb-20 pt-10 sm:pt-0 z-[1000] sm:text-[10rem] text-[5.062rem]">
-                <h1 className="relative text-2xl h-[300px] sm:h-[200px] m-0 overflow-hidden ">
+              <div className="w-full text-secondary h-auto flex justify-start flex-col gap-4 md:gap-10 font-modern px-5 md:pl-10 pb-10 md:pb-20 pt-10 md:pt-0 z-[1000] text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[10rem]">
+                <h1 className="relative text-2xl h-[80px] sm:h-[100px] md:h-[150px] lg:h-[200px] m-0 overflow-hidden">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className="hiddenText absolute z-2 top-[50%]"> RANG-E </span>
+                  <span className="hiddenText absolute z-2 top-[50%] font-nudica text-primary"> rang-e.lab </span>
+                  {/* <span className=" z-10 top-[80%] text-5xl font-gord text-orange-500"> ray's curious mind </span> */}
                 </h1>
 
-                <h1 className=" relative h-[300px] sm:h-[200px] m-0 overflow-hidden ">
+                <h1 className="relative h-[80px] sm:h-[100px] md:h-[150px] lg:h-[200px] m-0 overflow-hidden">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className="hiddenText absolute z-2 "> DREAM</span>
+                  <span className="hiddenText absolute z-2 font-blackbird font-black"> DREAM</span>
                 </h1>
 
-                <h1 className="relative h-[300px] sm:h-[200px] m-0 overflow-hidden">
+                <h1 className="relative h-[80px] sm:h-[100px] md:h-[150px] lg:h-[200px] m-0 overflow-hidden">
                   {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className=" hiddenText absolute z-2 "> IMPOSSIBLE </span>
+                  <span className=" hiddenText absolute z-2 font-blackbird"> IMPOSSIBLE </span>
                 </h1>
 
-                <p className="relative h-[1.5rem] m-0 overflow-hidden text-[0.8rem] font-inter md:w-[100vw] w-[70vw] pt-10 sm:pt-0 sm:w-[100%]">
-                  <span className=" hiddenText absolute z-2 flex sm:w-[90vw] justify-between">
+                <p className="relative h-[1.5rem] m-0 overflow-hidden text-[0.7rem] sm:text-[0.8rem] font-basis w-full pt-5 sm:pt-0">
+                  <span className=" hiddenText absolute z-2 flex sm:w-[90vw] justify-between font-nudica">
                     <span>WHY?</span> <span>WHY?</span>{" "}
                     <span>WHY?</span>
                   </span>
                 </p> 
 
-                <p className="text-sm text-primary font-light w-1/4">
+                <p className="text-sm text-primary font-light w-full sm:w-1/2 lg:w-1/4 font-nudica">
                   Creating Digital experiences to tell stories by creating meaningful and interactive moments that resonate with people.
                 </p>
 
@@ -152,33 +157,57 @@ const Journal = () => {
         </div>
 
         <main className="w-[100%] h-[100%] flex flex-col border-primary border-t-2 bg-tex">
-          <h2 className="p-5 pl-10 text-[2rem]  text-primary  sm:text-[10.5rem] border-b-2 border-primary font-gord">
+          <h2 className="p-5 pl-5 sm:pl-10 text-[2rem] text-primary sm:text-[3rem] md:text-[5rem] lg:text-[10.5rem] border-b-2 border-primary font-gord">
             About
           </h2>
 
-          <div className="p-5 flex flex-col md:flex-row h-[50%] sm:h-fit w-[100vw] ">
+          <div className="p-5 flex flex-col md:flex-row h-auto w-full">
             <About />
 
          
           </div>
 
-          <h2 className="p-5 pl-10 mb-1 text-[2rem]  text-primary sm:text-[10.5rem] border-b-2 border-primary font-gord">
+          <h2 className="p-5 pl-5 sm:pl-10 mb-1 text-[2rem] text-primary sm:text-[3rem] md:text-[5rem] lg:text-[10.5rem] border-b-2 border-primary font-gord">
             Projects
           </h2>
+
+          {/* Navigation Tabs */}
+          <div className="flex gap-4 px-5 sm:px-10 pb-5 border-b-2 border-primary font-basis">
+            <button
+              onClick={() => setActiveTab('journal')}
+              className={`px-4 py-2 font-nudica font-semibold transition-all ${
+                activeTab === 'journal'
+                  ? 'text-primary border-b-2 border-primary'
+                  : 'text-secondary hover:text-primary'
+              }`}
+            >
+              Journal
+            </button>
+            <button
+              onClick={() => setActiveTab('web')}
+              className={`px-4 py-2 font-nudica font-semibold transition-all ${
+                activeTab === 'web'
+                  ? 'text-primary border-b-2 border-primary'
+                  : 'text-secondary hover:text-primary'
+              }`}
+            >
+              Web
+            </button>
+          </div>
 
           <div
             data-scroll
             data-scroll-speed="0.1"
             className="p-5 column-4 h-[100%] flex w-[100%] border-black "
           >
-            <JournalEntry />
+            {activeTab === 'journal' ? <JournalEntry /> : <WebEntry />}
 
          
           </div>
 
           <div
             id="footer"
-            className="w-[100%] h-[20vh] bg-text text-secondary border-t-primary border-t-2 p-5 flex flex-col justify-end"
+            className="w-full h-auto min-h-[20vh] bg-text text-secondary border-t-primary border-t-2 p-5 flex flex-col justify-end"
           >
             <div className="flex pb-5 pt-5">
               {/* <a target="_blank" href="https://icons8.com/icon/447/linkedin">LinkedIn</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> */}
@@ -200,7 +229,7 @@ const Journal = () => {
 
               <a
                 target="_blank"
-                href="https://www.instagram.com/rayscuriousmind"
+                href="https://www.instagram.com/range.lab"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -215,13 +244,13 @@ const Journal = () => {
             </div>
 
             <div className="pb-2">
-              <p className="text-[0.9rem]">josephchikak@gmail.com</p>
+              <p className="text-[0.9rem] font-nudica">josephchikak@gmail.com</p>
             </div>
 
-            <div className="flex justify-between">
-              <p>© all rights reserved 2025 </p>
+            <div className="flex font-nudica flex-col sm:flex-row justify-between gap-2">
+              <p>© all rights reserved {new Date().getFullYear()} </p>
 
-              <p className="text-[0.9rem]">designed by Joseph Chikak</p>
+              <p className="text-[0.9rem] font-nudica">Designed by Joseph Chikak</p>
             </div>
           </div>
         </main>

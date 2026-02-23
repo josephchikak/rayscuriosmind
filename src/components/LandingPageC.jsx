@@ -2,7 +2,7 @@ import {useThree, useFrame } from "@react-three/fiber";
 import {
   OrthographicCamera,
   Image,
-useTexture
+  useTexture,
 } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
@@ -19,6 +19,12 @@ const LandingPage = () => {
     { length: 9 },
     (_, i) => `/stickers/Asset ${i + 1}.webp`
   );
+
+  const stickerTexture = useTexture(currentStickerUrl)
+  const baseSize = 100
+  const aspect = stickerTexture.image
+    ? stickerTexture.image.width / stickerTexture.image.height
+    : 1
 
   const viewport = useThree((state) => state.viewport);
 
@@ -89,7 +95,7 @@ const LandingPage = () => {
         url={currentStickerUrl}
 
         
-        scale={100}
+        scale={[baseSize * aspect, baseSize]}
        
         // zIndex={10}
   

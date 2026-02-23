@@ -34,6 +34,22 @@
   src: url('./assets/fonts/inter-v12-latin-regular.woff2');
 }
 
+@font-face {
+  font-family: 'nudica-mono';
+  src: url('./assets/fonts/nudicamono-medium-webfont.woff');
+}
+
+@font-face {
+  font-family: 'blackbird';
+  src: url('./assets/fonts/Blackbird v2 Font.otf');
+}
+
+@font-face {
+  font-family: 'basis';
+  src: url('./assets/fonts/BasisGrotesqueMonoPro-Regular.ttf');
+}
+
+
 
 
 
