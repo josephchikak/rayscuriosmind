@@ -242,9 +242,9 @@ const Journal = () => {
                 </svg>
               </a>
             </div>
-
+              
             <div className="pb-2">
-              <p className="text-[0.9rem] font-nudica">josephchikak@gmail.com</p>
+              <a href="mailto:josephchikak@gmail.com" className="text-[0.9rem] font-nudica">josephchikak@gmail.com</a>
             </div>
 
             <div className="flex font-nudica flex-col sm:flex-row justify-between gap-2">
