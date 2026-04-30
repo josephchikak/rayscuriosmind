@@ -33,12 +33,13 @@ const container = useRef()
     </View>
 
 
- <View index={2} className="absolute hidden sm:block border-background top-[50px] left-[50%] md:left-[67%] lg:left-[79%] w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] bg-[black] bg-center border-2 rounded-lg border-black hover:cursor-pointer z-20" >
-
-        {/* <Image url="/icons/logo.png" transparent scale={4}/> */}
+ <View index={2} className="absolute hidden sm:block border-background top-[50px] left-[50%] md:left-[67%] lg:left-[79%] w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] bg-[black] bg-center border-2 rounded-lg border-black hover:cursor-pointer z-20" onClick={() => window.open('https://t.co/htY4nn8tWe', '_blank')}>
         <WalkMan/>
+</View>
 
-</View> 
+<p className="absolute hidden sm:block top-[255px] left-[50%] md:left-[67%] lg:left-[79%] w-[200px] text-center font-nudica text-[0.55rem] text-secondary uppercase tracking-widest z-20 pointer-events-none">
+  click player for more
+</p>
 
 
 

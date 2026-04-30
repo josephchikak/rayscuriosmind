@@ -5,94 +5,39 @@ import About from "./components/About"
 import WebEntry from "./components/WebEntry"
 import { gsap } from "gsap"
 import { useEffect, useRef, useState } from "react"
-// @ts-ignore
-import LocomotiveScroll from "locomotive-scroll"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 /* eslint-disable */
 const Journal = () => {
   const [activeTab, setActiveTab] = useState('journal')
+  const container = useRef()
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const locomotiveScroll = new LocomotiveScroll();
-
-    const timeline = gsap.timeline({
-      // scrollTrigger:{
-      //     trigger: document.documentElement,
-      //     start:'top',
-      //     end: 'bottom',
-      //     scrub:true,
-      //     toggleActions: 'reverse'
-      // }
-    });
-
-    timeline.from(".hiddenText", {
+    gsap.timeline().from(".hiddenText", {
       y: "100%",
       ease: "Power4.easeOut",
       stagger: 0.3,
       delay: 0.5,
       duration: 1.5,
     });
-  },[]);
-
-  const container = useRef();
-  const textRef = useRef(null);
-
-  // useLayoutEffect(() => {
-
-  //    let height = container.current.getBoundingClientRect().height
-
-  //     document.body.style.height = height + "px";
-
-  //     console.log(height, document.documentElement.clientHeight)
-
-  //     gsap.to(container.current, {
-  //         y: () => -(height - document.documentElement.clientHeight),
-  //         // ease: 'sine.out',
-  //         // duration:2,
-  //         scrollTrigger: {
-  //           trigger: document.body,
-  //           start: "top top",
-  //           end: "bottom bottom",
-  //           scrub: 1,
-  //         //   scroll:container.current
-  //         //   toggleActions:'reverse'
-  //         }
-  //       });
-
-  // },[])
-
-  // let width = p5Cointainer.clientWidth
-  // let height = p5Cointainer.clientHeight
+  }, []);
 
   return (
     <>
-      {/* <Loading/> */}
-
       <div
-        data-scroll
-        // data-scroll-speed='0.5'
         ref={container}
-        className=" w-[100vw] h-[100%] text-text flex flex-col bg-background transition-all ease-in-out overflow-hidden"
+        className="w-[100vw] h-[100%] text-text flex flex-col bg-background transition-all ease-in-out overflow-hidden"
       >
-        <div
-          data-scroll
-          data-scroll-speed="0.3"
-          className="h-[100vh] w-full z-10 relative"
-        >
-          {/* <Suspense fallback={<Loading/>}> */}
-
+        <div className="h-[100vh] w-full z-10 relative">
           <Scene />
 
-          {/* </Suspense> */}
-
-          <div className="list-none h-[100%] w-[100vw]  -z-1 overflow-hidden absolute bg-text bg-cover bg-center text-primary  ">
-            <div className="absolute left-[50%] bottom-[5%]  animate-bounce">
+          <div className="list-none h-[100%] w-[100vw] -z-1 overflow-hidden absolute bg-text bg-cover bg-center text-primary">
+            <div className="absolute left-[50%] bottom-[5%] animate-bounce">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className=" size-10"
+                className="size-10"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
@@ -106,52 +51,30 @@ const Journal = () => {
               </svg>
             </div>
             <nav className="w-[100%]">
-              <ul className="flex p-2 font-gord justify-center z-10 text-[0.7rem] ">
+              <ul className="flex p-2 font-gord justify-center z-10 text-[0.7rem]">
                 <li className="p-2 font-basis hover:border-b-primary hover:border-b-2 absolute sm:visible">
                   UNDER CONSTRUCTION
                 </li>
-
-                {/* <li className="p-1 hover:cursor-pointer hover:border-b-primary hover:border-b-4">
-                            projects
-                        </li> */}
               </ul>
             </nav>
-            {/* <ul className=""> */}
             <div>
-              <div className="w-full text-secondary h-auto flex justify-start flex-col gap-4 md:gap-10 font-modern px-5 md:pl-10 pb-10 md:pb-20 pt-10 md:pt-0 z-[1000] text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[10rem]">
+              <div className="w-full text-secondary h-auto flex justify-start flex-col gap-4 md:gap-10 font-modern px-5 md:pl-10 pb-10 md:pb-20 pt-10 md:pt-0 z-[1000] text-[2.5rem] sm:text-[3.5rem] md:text-[6rem] lg:text-[10rem]">
                 <h1 className="relative text-2xl h-[80px] sm:h-[100px] md:h-[150px] lg:h-[200px] m-0 overflow-hidden">
-                  {/* <span className="text-[2rem] ">welcome to </span>  */}
                   <span className="hiddenText absolute z-2 top-[50%] font-nudica text-primary"> rang-e.lab </span>
-                  {/* <span className=" z-10 top-[80%] text-5xl font-gord text-orange-500"> ray's curious mind </span> */}
                 </h1>
 
                 <h1 className="relative h-[80px] sm:h-[100px] md:h-[150px] lg:h-[200px] m-0 overflow-hidden">
-                  {/* <span className="text-[2rem] ">welcome to </span>  */}
                   <span className="hiddenText absolute z-2 font-blackbird font-black"> DREAM</span>
                 </h1>
 
                 <h1 className="relative h-[80px] sm:h-[100px] md:h-[150px] lg:h-[200px] m-0 overflow-hidden">
-                  {/* <span className="text-[2rem] ">welcome to </span>  */}
-                  <span className=" hiddenText absolute z-2 font-blackbird"> IMPOSSIBLE </span>
+                  <span className="hiddenText absolute z-2 font-blackbird"> IMPOSSIBLE </span>
                 </h1>
-
-                <p className="relative h-[1.5rem] m-0 overflow-hidden text-[0.7rem] sm:text-[0.8rem] font-basis w-full pt-5 sm:pt-0">
-                  <span className=" hiddenText absolute z-2 flex sm:w-[90vw] justify-between font-nudica">
-                    <span>WHY?</span> <span>WHY?</span>{" "}
-                    <span>WHY?</span>
-                  </span>
-                </p> 
 
                 <p className="text-sm text-primary font-light w-full sm:w-1/2 lg:w-1/4 font-nudica">
                   Creating Digital experiences to tell stories by creating meaningful and interactive moments that resonate with people.
                 </p>
-
-                {/* <img src="/icons/logo.png" alt="bg" className="w-[10%] h-[10%] absolute top-2 right-5 object-cover" />  */}
               </div>
-
-              {/* <div className="border-t-2">
-                    </div> */}
-              {/* </ul> */}
             </div>
           </div>
         </div>
@@ -163,15 +86,12 @@ const Journal = () => {
 
           <div className="p-5 flex flex-col md:flex-row h-auto w-full">
             <About />
-
-         
           </div>
 
           <h2 className="p-5 pl-5 sm:pl-10 mb-1 text-[2rem] text-primary sm:text-[3rem] md:text-[5rem] lg:text-[10.5rem] border-b-2 border-primary font-gord">
             Projects
           </h2>
 
-          {/* Navigation Tabs */}
           <div className="flex gap-4 px-5 sm:px-10 pb-5 border-b-2 border-primary font-basis">
             <button
               onClick={() => setActiveTab('journal')}
@@ -195,14 +115,8 @@ const Journal = () => {
             </button>
           </div>
 
-          <div
-            data-scroll
-            data-scroll-speed="0.1"
-            className="p-5 column-4 h-[100%] flex w-[100%] border-black "
-          >
+          <div className="p-5 column-4 h-[100%] flex w-[100%] border-black">
             {activeTab === 'journal' ? <JournalEntry /> : <WebEntry />}
-
-         
           </div>
 
           <div
@@ -210,15 +124,10 @@ const Journal = () => {
             className="w-full h-auto min-h-[20vh] bg-text text-secondary border-t-primary border-t-2 p-5 flex flex-col justify-end"
           >
             <div className="flex pb-5 pt-5">
-              {/* <a target="_blank" href="https://icons8.com/icon/447/linkedin">LinkedIn</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> */}
-
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/joseph-chikak-4b232221b/"
-              >
+              <a target="_blank" href="https://www.linkedin.com/in/joseph-chikak-4b232221b/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="fill-primary  w-[80%]"
+                  className="fill-primary w-[80%]"
                   viewBox="0 0 50 50"
                   width="50px"
                   height="50px"
@@ -227,13 +136,10 @@ const Journal = () => {
                 </svg>
               </a>
 
-              <a
-                target="_blank"
-                href="https://www.instagram.com/range.lab"
-              >
+              <a target="_blank" href="https://www.instagram.com/range.lab">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="fill-primary  w-[80%]"
+                  className="fill-primary w-[80%]"
                   viewBox="0 0 50 50"
                   width="50px"
                   height="50px"
@@ -242,14 +148,13 @@ const Journal = () => {
                 </svg>
               </a>
             </div>
-              
+
             <div className="pb-2">
               <a href="mailto:josephchikak@gmail.com" className="text-[0.9rem] font-nudica">josephchikak@gmail.com</a>
             </div>
 
             <div className="flex font-nudica flex-col sm:flex-row justify-between gap-2">
               <p>© all rights reserved {new Date().getFullYear()} </p>
-
               <p className="text-[0.9rem] font-nudica">Designed by Joseph Chikak</p>
             </div>
           </div>

@@ -100,7 +100,7 @@ const WebCard = ({ entry }) => {
 
             {/* Image Thumbnails */}
             {images && images.length > 0 ? (
-              <div className='flex flex-row gap-2 items-center overflow-x-auto bg-red-200 p-2'>
+              <div className='flex flex-row gap-2 items-center overflow-x-auto p-2'>
                 {images.map((image, index) => {
                   const mimeType = image?.fields?.file?.contentType || ''
                   const isVid = isVideo(mimeType)
@@ -139,7 +139,7 @@ const WebCard = ({ entry }) => {
                 })}
               </div>
             ) : (
-              <div className='bg-yellow-200 p-2 w-full'>No images found</div>
+              <div className='p-2 w-full text-secondary text-[0.8rem] font-nudica'>No images found</div>
             )}
           </div>
         </div>
