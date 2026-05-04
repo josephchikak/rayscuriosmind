@@ -46,7 +46,7 @@ const JournalEntry = () => {
     <>
      { entries.length ?
 
-      <div className="w-full h-full p-3 sm:p-5 columns-1 md:columns-2">
+      <div className="w-full p-3 sm:p-5 columns-1 md:columns-2 gap-4">
         {
         
           

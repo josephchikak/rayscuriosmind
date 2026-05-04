@@ -9,17 +9,21 @@ const JournalCard = ({ entry, images, url, code }) => {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(card.current, {
-      scrollTrigger: {
-        trigger: card.current,
-        start: "0px bottom",
-        end: "500px bottom",
-        scrub: true,
-      },
-      y: "-20px",
-      duration: 1,
-      ease: "linear",
-    });
+    const ctx = gsap.context(() => {
+      gsap.from(card.current, {
+        scrollTrigger: {
+          trigger: card.current,
+          start: "top 92%",
+          toggleActions: "play none none none",
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
+    }, card);
+
+    return () => ctx.revert();
   }, []);
 
   const [mainPic, setMainPic] = useState(images[0]);
@@ -30,7 +34,7 @@ const JournalCard = ({ entry, images, url, code }) => {
 
   return (
     <div
-      className="p-3 sm:p-5 mb-2 flex h-full journalCard w-full bg-text transition-all ease-in-out rounded-lg border-2 border-primary relative text-[1rem] break-inside-avoid"
+      className="p-3 sm:p-5 mb-4 flex h-fit journalCard w-full bg-text rounded-lg border-2 border-primary relative text-[1rem] break-inside-avoid"
       ref={card}
     >
       <div className="rounded-[10px] w-full">

@@ -28,7 +28,7 @@ const Journal = () => {
     <>
       <div
         ref={container}
-        className="w-[100vw] h-[100%] text-text flex flex-col bg-background transition-all ease-in-out overflow-hidden"
+        className="w-[100vw] h-[100%] text-text flex flex-col bg-background overflow-x-hidden"
       >
         <div className="h-[100vh] w-full z-10 relative">
           <Scene />
@@ -79,7 +79,7 @@ const Journal = () => {
           </div>
         </div>
 
-        <main className="w-[100%] h-[100%] flex flex-col border-primary border-t-2 bg-tex">
+        <main className="w-[100%] h-[100%] flex flex-col border-primary border-t-2 bg-background">
           <h2 className="p-5 pl-5 sm:pl-10 text-[2rem] text-primary sm:text-[3rem] md:text-[5rem] lg:text-[10.5rem] border-b-2 border-primary font-gord">
             About
           </h2>

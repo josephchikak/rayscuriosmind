@@ -43,10 +43,14 @@ const container = useRef()
 
 
 
- <Canvas className="canvas top-0 right-0 w-full sm:h-[100%] z-20" eventSource={container}>
-
-        <View.Port/>
-
+ <Canvas
+  className="canvas top-0 right-0 w-full sm:h-[100%] z-20"
+  eventSource={container}
+  onCreated={({ gl }) => {
+    gl.setClearColor(0x070600, 1);
+  }}
+>
+  <View.Port/>
 </Canvas>
 
  <div className="invisible absolute top-0 right-0  h-[80%] lg:w-[32vw] md:w-[40vw] rounded-lg  border-4 flex justify-center items-end z-[1] flow ">

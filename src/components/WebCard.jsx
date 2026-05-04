@@ -6,29 +6,37 @@ import gsap from 'gsap'
 const WebCard = ({ entry }) => {
 
   const card = useRef(null)
-  const { images, description, url } = entry
+  const { images, description, url, mainImage } = entry
+
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
-    gsap.from(card.current, {
-      scrollTrigger:{
-        trigger: card.current,
-        start:'0px bottom',
-        end: '500px bottom',
-        scrub:true,
-      },
-      y:'-20px',
-      duration:1,
-      ease:'linear'
-    })
+    const ctx = gsap.context(() => {
+      gsap.from(card.current, {
+        scrollTrigger: {
+          trigger: card.current,
+          start: "top 92%",
+          toggleActions: "play none none none",
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      })
+    }, card)
+
+    return () => ctx.revert()
   }, [])
 
+
   // Get the main image URL from first image in array
-  const mainImageUrl = images && images[0]?.fields?.file?.url
+  const mainImageUrl = mainImage?.fields?.file?.url || (images && images[0]?.fields?.file?.url) || ''
   const mainImageMimeType = images && images[0]?.fields?.file?.contentType || ''
   const [displayedImage, setDisplayedImage] = useState(mainImageUrl)
   const [displayedMimeType, setDisplayedMimeType] = useState(mainImageMimeType)
+
+
 
   const handleImageClick = (image) => {
     const imageUrl = image?.fields?.file?.url
@@ -47,7 +55,7 @@ const WebCard = ({ entry }) => {
 
   return (
     <div
-      className="p-3 sm:p-5 mb-2 flex h-fit journalCard w-full bg-text transition-all ease-in-out rounded-lg border-2 border-primary relative text-[1rem] font-nudica break-inside-avoid"
+      className="p-3 sm:p-5 mb-4 flex h-fit journalCard w-full bg-text rounded-lg border-2 border-primary relative text-[1rem] font-nudica break-inside-avoid"
       ref={card}
     >
       <div className="rounded-[10px] w-full">
@@ -121,11 +129,11 @@ const WebCard = ({ entry }) => {
                           >
                             <source src={image?.fields?.file?.url} type={mimeType} />
                           </video>
-                          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all">
+                          {/* <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M6.3 2.841L2.532.563l-1.065.636 1.95 1.231V15.7c0 .819.67 1.488 1.49 1.488h14.175c.819 0 1.49-.669 1.49-1.488V2.564h1.065l1.951-1.231-1.065-.636L13.7 2.841m0 0a1.483 1.483 0 011.48 1.489v13.073a1.483 1.483 0 01-1.48 1.488H-1.475a1.483 1.483 0 01-1.48-1.488V4.33a1.483 1.483 0 011.48-1.489z" />
                             </svg>
-                          </div>
+                          </div> */}
                         </>
                       ) : (
                         <img

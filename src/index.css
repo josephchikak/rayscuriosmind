@@ -56,6 +56,11 @@
 
 
 
+html, body, #root {
+  background-color: #070600;
+  min-height: 100%;
+}
+
 :root {
   /* font-family: "adobe-garamond-pro", serif; */
   line-height: 1.5;
@@ -65,7 +70,7 @@
   /* color: rgba(0, 0, 0, 0.87); */
   /* background-color: #fffaf0; */
   color: #f7f7ff;
-  transition: all ease-out 0.8s;
+  transition: color ease-out 0.8s, background-color ease-out 0.8s;
 
 
 
