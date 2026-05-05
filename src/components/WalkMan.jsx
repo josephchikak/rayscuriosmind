@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useGLTF, useAnimations, useTexture } from '@react-three/drei'
-import { useFrame, useThree } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import walkMan from '../assets/Sony TPS-L2 Walkman.glb'
 import texture from '../assets/baked.jpg'
 import * as THREE from 'three'
@@ -9,21 +9,13 @@ export default function Model(props) {
   const group = useRef()
   const { nodes, animations } = useGLTF(walkMan)
   const { actions } = useAnimations(animations, group)
-  const { gl } = useThree()
 
   const bakedTexture = useTexture(texture)
   bakedTexture.flipY = false
-
-  useEffect(() => {
-    gl.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    gl.setClearColor('#070600')
-    gl.toneMapping = THREE.ACESFilmicToneMapping
-    gl.toneMappingExposure = 0.7
-    gl.outputColorSpace = THREE.SRGBColorSpace
-  }, [gl])
+  bakedTexture.colorSpace = THREE.SRGBColorSpace
 
   useFrame(() => {
-    group.current.rotation.y += 0.006
+    if (group.current) group.current.rotation.y += 0.006
   })
 
   return (

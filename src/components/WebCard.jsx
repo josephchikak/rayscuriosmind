@@ -30,25 +30,41 @@ const WebCard = ({ entry }) => {
   }, [])
 
 
-  // Get the main image URL from first image in array
+  const VIDEO_EXTENSIONS = /\.(mp4|webm|mov|m4v|ogv)(\?|$)/i
+
+  const inferMimeFromUrl = (url) => {
+    if (!url) return ''
+    const match = url.match(VIDEO_EXTENSIONS)
+    if (!match) return ''
+    const ext = match[1].toLowerCase()
+    if (ext === 'mov' || ext === 'm4v') return 'video/mp4'
+    if (ext === 'ogv') return 'video/ogg'
+    return `video/${ext}`
+  }
+
+  const resolveMime = (asset) => {
+    const declared = asset?.fields?.file?.contentType || ''
+    if (declared.startsWith('video/') || declared.startsWith('image/')) return declared
+    return inferMimeFromUrl(asset?.fields?.file?.url) || declared
+  }
+
   const mainImageUrl = mainImage?.fields?.file?.url || (images && images[0]?.fields?.file?.url) || ''
-  const mainImageMimeType = images && images[0]?.fields?.file?.contentType || ''
+  const mainImageMimeType = resolveMime(mainImage) || (images && resolveMime(images[0])) || ''
   const [displayedImage, setDisplayedImage] = useState(mainImageUrl)
   const [displayedMimeType, setDisplayedMimeType] = useState(mainImageMimeType)
 
-
-
   const handleImageClick = (image) => {
     const imageUrl = image?.fields?.file?.url
-    const mimeType = image?.fields?.file?.contentType || ''
+    const mimeType = resolveMime(image)
     if (imageUrl) {
       setDisplayedImage(imageUrl)
       setDisplayedMimeType(mimeType)
     }
   }
 
-  const isVideo = (mimeType) => {
-    return mimeType && mimeType.startsWith('video/')
+  const isVideo = (mimeType, url) => {
+    if (mimeType && mimeType.startsWith('video/')) return true
+    return !!(url && VIDEO_EXTENSIONS.test(url))
   }
 
  
@@ -63,13 +79,16 @@ const WebCard = ({ entry }) => {
           {/* Main Image */}
           <div className='w-[100%]'>
             {displayedImage && (
-              isVideo(displayedMimeType) ? (
+              isVideo(displayedMimeType, displayedImage) ? (
                 <video
+                  key={displayedImage}
                   className="lg:h-[250px] w-full object-cover rounded-lg border-2 border-primary"
                   controls
                   muted
+                  playsInline
+                  preload="metadata"
                 >
-                  <source src={displayedImage} type={displayedMimeType} />
+                  <source src={displayedImage} type={displayedMimeType || inferMimeFromUrl(displayedImage) || 'video/mp4'} />
                   Your browser does not support the video tag.
                 </video>
               ) : (
@@ -100,7 +119,7 @@ const WebCard = ({ entry }) => {
               <div className='flex flex-col pt-2'>
                 {url && (
                   <a href={url} target='_blank' rel="noopener noreferrer" className='hover:cursor-pointer text-background'>
-                    <span className='text-primary pb-5'>Live Demo</span>
+                    <span className='text-primary pb-5'>Live </span>
                   </a>
                 )}
               </div>
@@ -110,9 +129,10 @@ const WebCard = ({ entry }) => {
             {images && images.length > 0 ? (
               <div className='flex flex-row gap-2 items-center overflow-x-auto p-2'>
                 {images.map((image, index) => {
-                  const mimeType = image?.fields?.file?.contentType || ''
-                  const isVid = isVideo(mimeType)
-                  const isActive = displayedImage === image?.fields?.file?.url
+                  const fileUrl = image?.fields?.file?.url
+                  const mimeType = resolveMime(image)
+                  const isVid = isVideo(mimeType, fileUrl)
+                  const isActive = displayedImage === fileUrl
                   return (
                     <div
                       key={index}
@@ -126,8 +146,11 @@ const WebCard = ({ entry }) => {
                           <video
                             className="h-full w-full object-cover"
                             muted
+                            playsInline
+                            preload="none"
+                            poster=""
                           >
-                            <source src={image?.fields?.file?.url} type={mimeType} />
+                            <source src={fileUrl} type={mimeType || inferMimeFromUrl(fileUrl) || 'video/mp4'} />
                           </video>
                           {/* <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -138,7 +161,7 @@ const WebCard = ({ entry }) => {
                       ) : (
                         <img
                           className="h-full w-full object-cover transition-opacity group-hover:opacity-80"
-                          src={image?.fields?.file?.url}
+                          src={fileUrl}
                           alt={`Project thumbnail ${index + 1}`}
                         />
                       )}

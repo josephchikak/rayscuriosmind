@@ -17,7 +17,7 @@ const JournalCard = ({ entry, images, url, code }) => {
           toggleActions: "play none none none",
         },
         y: 20,
-        opacity: 0,
+        // opacity: 0,
         duration: 0.6,
         ease: "power2.out",
       });
@@ -44,6 +44,8 @@ const JournalCard = ({ entry, images, url, code }) => {
               <video
                 key={mainPic?.fields?.file?.url}
                 muted={true}
+                playsInline
+                preload="metadata"
                 className="h-auto w-[100%] object-contain sm:h-auto sm:w-[100%] border-2 border-primary rounded-lg"
                 controls
               >
@@ -87,6 +89,8 @@ const JournalCard = ({ entry, images, url, code }) => {
                     {image?.fields?.description === "video" ? (
                       <video
                         muted={true}
+                        playsInline
+                        preload="none"
                         className="h-12 w-12 sm:h-16 sm:w-16 object-cover p-0"
                         onClick={() => handleClick(image)}
                       >

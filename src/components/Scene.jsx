@@ -1,9 +1,9 @@
 import { Canvas,} from "@react-three/fiber"
 import { View} from "@react-three/drei"
 import { useRef } from "react"
+import * as THREE from 'three'
 
 import WalkMan from "./WalkMan"
-// import * as THREE from 'three'
 import LandingPage from "./LandingPageC"
 
 
@@ -46,8 +46,13 @@ const container = useRef()
  <Canvas
   className="canvas top-0 right-0 w-full sm:h-[100%] z-20"
   eventSource={container}
+  dpr={[1, 2]}
+  gl={{ antialias: true, powerPreference: 'high-performance', alpha: false, stencil: false }}
   onCreated={({ gl }) => {
     gl.setClearColor(0x070600, 1);
+    gl.toneMapping = THREE.ACESFilmicToneMapping;
+    gl.toneMappingExposure = 0.7;
+    gl.outputColorSpace = THREE.SRGBColorSpace;
   }}
 >
   <View.Port/>

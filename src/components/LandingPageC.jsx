@@ -1,31 +1,38 @@
 import { useThree, useFrame } from "@react-three/fiber";
-import { OrthographicCamera, Image, useTexture } from "@react-three/drei";
-import { useRef, useState, useEffect } from "react";
+import { OrthographicCamera } from "@react-three/drei";
+import { useRef, useState, useEffect, useMemo } from "react";
 import * as THREE from "three";
+import { useTexture } from "@react-three/drei";
 
 const STICKER_URLS = Array.from({ length: 9 }, (_, i) => `/stickers/Asset ${i + 1}.webp`);
 const STICKER_DELAY = 200;
 
 const LandingPage = () => {
-  const stickers = useRef(null);
+  const stickerRef = useRef(null);
   const mouse = useRef(new THREE.Vector2(0, 0));
-  const [currentStickerUrl, setCurrentStickerUrl] = useState(STICKER_URLS[0]);
   const lastStickerChange = useRef(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const { gl } = useThree();
-  const viewport = useThree((state) => state.viewport);
-
-  const stickerTexture = useTexture(currentStickerUrl);
-  const baseSize = 100;
-  const aspect = stickerTexture.image
-    ? stickerTexture.image.width / stickerTexture.image.height
-    : 1;
+  const textures = useTexture(STICKER_URLS);
 
   useEffect(() => {
-    gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    gl.toneMapping = THREE.ACESFilmicToneMapping;
-    gl.outputColorSpace = THREE.SRGBColorSpace;
-  }, [gl]);
+    textures.forEach((tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.minFilter = THREE.LinearMipMapLinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.anisotropy = 4;
+      tex.needsUpdate = true;
+    });
+  }, [textures]);
+
+  const currentTexture = textures[currentIndex];
+  const baseSize = 100;
+  const aspect = useMemo(() => {
+    const img = currentTexture?.image;
+    return img ? img.width / img.height : 1;
+  }, [currentTexture]);
+
+  const viewport = useThree((state) => state.viewport);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -34,15 +41,15 @@ const LandingPage = () => {
 
       const now = Date.now();
       if (now - lastStickerChange.current > STICKER_DELAY) {
-        setCurrentStickerUrl(STICKER_URLS[Math.floor(Math.random() * STICKER_URLS.length)]);
+        setCurrentIndex(Math.floor(Math.random() * STICKER_URLS.length));
         lastStickerChange.current = now;
       }
 
-      if (stickers.current) {
-        stickers.current.visible = true;
-        stickers.current.material.opacity = 1;
-        stickers.current.position.x = mouse.current.x;
-        stickers.current.position.y = mouse.current.y;
+      if (stickerRef.current) {
+        stickerRef.current.visible = true;
+        stickerRef.current.material.opacity = 1;
+        stickerRef.current.position.x = mouse.current.x;
+        stickerRef.current.position.y = mouse.current.y;
       }
     };
 
@@ -51,8 +58,8 @@ const LandingPage = () => {
   }, [viewport]);
 
   useFrame(() => {
-    if (stickers.current?.material) {
-      stickers.current.material.opacity *= 0.98;
+    if (stickerRef.current?.material) {
+      stickerRef.current.material.opacity *= 0.98;
     }
   });
 
@@ -69,13 +76,14 @@ const LandingPage = () => {
         bottom={viewport.height / -2}
       />
       <ambientLight />
-      <Image
-        ref={stickers}
-        url={currentStickerUrl}
-        scale={[baseSize * aspect, baseSize]}
-        transparent
+      <mesh
+        ref={stickerRef}
         visible={false}
-      />
+        scale={[baseSize * aspect, baseSize, 1]}
+      >
+        <planeGeometry args={[1, 1]} />
+        <meshBasicMaterial map={currentTexture} transparent depthWrite={false} />
+      </mesh>
     </>
   );
 };
