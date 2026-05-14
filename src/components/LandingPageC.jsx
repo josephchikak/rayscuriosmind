@@ -76,9 +76,9 @@ const LandingPage = () => {
         top={viewport.height / 2}
         bottom={viewport.height / -2}
       />
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <FaceHead />
-      </Suspense>
+      </Suspense> */}
       <mesh
         ref={stickerRef}
         visible={false}
