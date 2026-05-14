@@ -3,6 +3,7 @@ import "./journal.css"
 import Scene from "./components/Scene"
 import About from "./components/About"
 import WebEntry from "./components/WebEntry"
+import FeaturedWorks from "./components/FeaturedWorks"
 import { gsap } from "gsap"
 import { useEffect, useRef, useState } from "react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -58,7 +59,7 @@ const Journal = () => {
               </ul>
             </nav>
             <div>
-              <div className="w-full text-secondary h-auto flex justify-start flex-col gap-4 md:gap-10 font-modern px-5 md:pl-10 pb-10 md:pb-20 pt-10 md:pt-0 z-[1000] text-[2.5rem] sm:text-[3.5rem] md:text-[6rem] lg:text-[10rem]">
+              <div className="w-full text-text h-auto flex justify-start flex-col gap-4 md:gap-10 font-modern px-5 md:pl-10 pb-10 md:pb-20 pt-10 md:pt-0 z-[1000] text-[2.5rem] sm:text-[3.5rem] md:text-[6rem] lg:text-[10rem]">
                 <h1 className="relative text-2xl h-[80px] sm:h-[100px] md:h-[150px] lg:h-[200px] m-0 overflow-hidden">
                   <span className="hiddenText absolute z-2 top-[50%] font-nudica text-primary"> rang-e.lab </span>
                 </h1>
@@ -87,6 +88,8 @@ const Journal = () => {
           <div className="p-5 flex flex-col md:flex-row h-auto w-full">
             <About />
           </div>
+
+          <FeaturedWorks />
 
           <h2 className="p-5 pl-5 sm:pl-10 mb-1 text-[2rem] text-primary sm:text-[3rem] md:text-[5rem] lg:text-[10.5rem] border-b-2 border-primary font-gord">
             Projects

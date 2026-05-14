@@ -1,8 +1,9 @@
 import { useThree, useFrame } from "@react-three/fiber";
 import { OrthographicCamera } from "@react-three/drei";
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useEffect, useMemo, Suspense } from "react";
 import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
+import FaceHead from "./FaceHead";
 
 const STICKER_URLS = Array.from({ length: 9 }, (_, i) => `/stickers/Asset ${i + 1}.webp`);
 const STICKER_DELAY = 200;
@@ -75,7 +76,9 @@ const LandingPage = () => {
         top={viewport.height / 2}
         bottom={viewport.height / -2}
       />
-      <ambientLight />
+      <Suspense fallback={null}>
+        <FaceHead />
+      </Suspense>
       <mesh
         ref={stickerRef}
         visible={false}

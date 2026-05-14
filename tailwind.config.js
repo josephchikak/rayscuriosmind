@@ -11,7 +11,7 @@ export default {
     colors: {
         'primary' : '#E57225',
         'secondary': '#3A6EA5',
-        'background': '#070600',
+        'background': '#000000',
         'text': '#f8f4e3'
     },
     fontFamily: {

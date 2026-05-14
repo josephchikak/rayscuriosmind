@@ -49,7 +49,7 @@ const container = useRef()
   dpr={[1, 2]}
   gl={{ antialias: true, powerPreference: 'high-performance', alpha: false, stencil: false }}
   onCreated={({ gl }) => {
-    gl.setClearColor(0x070600, 1);
+    gl.setClearColor(0x000000, 1);
     gl.toneMapping = THREE.ACESFilmicToneMapping;
     gl.toneMappingExposure = 0.7;
     gl.outputColorSpace = THREE.SRGBColorSpace;
