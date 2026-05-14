@@ -89,7 +89,7 @@ const Journal = () => {
             <About />
           </div>
 
-          <FeaturedWorks />
+          {/* <FeaturedWorks /> */}
 
           <h2 className="p-5 pl-5 sm:pl-10 mb-1 text-[2rem] text-primary sm:text-[3rem] md:text-[5rem] lg:text-[10.5rem] border-b-2 border-primary font-gord">
             Projects
